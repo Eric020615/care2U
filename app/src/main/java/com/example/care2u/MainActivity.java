@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        replaceFragment(new HomeFragment());
         binding.bottomNavView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.home_button:

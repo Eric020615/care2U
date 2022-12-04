@@ -17,6 +17,8 @@
             android:layout_height="wrap_content"
             android:background="#01639A"
             android:minHeight="?attr/actionBarSize"
+            app:titleTextColor="@color/white"
+            app:menu="@menu/menu_top"
             />
 
         <androidx.fragment.app.FragmentContainerView
@@ -33,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/bottom_nav_view"
-            app:menu="@menu/menu"/>
+            app:menu="@menu/menu_bottom"/>
     </LinearLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

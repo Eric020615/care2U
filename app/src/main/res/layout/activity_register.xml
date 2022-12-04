@@ -23,14 +23,15 @@
         android:id="@+id/textView3"
         android:layout_width="46dp"
         android:layout_height="20dp"
+        android:layout_marginEnd="162dp"
         android:layout_marginBottom="18dp"
         android:text="Name"
         android:textAlignment="textStart"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.215" />
@@ -61,9 +62,9 @@
         android:inputType="textEmailAddress"
         android:textColorHint="#78BEE5"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView5"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.389" />
 
@@ -75,9 +76,9 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.135"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ETV_R_Email"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ETV_R_Email"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.484" />
 
@@ -89,23 +90,23 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.39"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/sign_up_button"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="@+id/sign_up_button"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.928" />
 
     <TextView
         android:id="@+id/login_text"
-        android:layout_width="76dp"
+        android:layout_width="58dp"
         android:layout_height="20dp"
         android:text="Log In"
         android:textColor="#01CBDD"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.77"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/sign_up_button"
+        app:layout_constraintHorizontal_bias="0.873"
+        app:layout_constraintStart_toStartOf="@+id/sign_up_button"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.928" />
 
@@ -117,9 +118,9 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.194"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ETV_R_Password"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ETV_R_Password"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.632" />
 
@@ -131,9 +132,9 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.135"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ETV_R_Name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ETV_R_Name"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.348" />
 
@@ -147,9 +148,9 @@
         android:inputType="textPassword"
         android:textColorHint="#78BEE5"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.531" />
 
@@ -163,9 +164,9 @@
         android:inputType="textPassword"
         android:textColorHint="#78BEE5"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView7"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.684" />
 
@@ -181,7 +182,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.806" />
+        app:layout_constraintVertical_bias="0.849" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

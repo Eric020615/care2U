@@ -3,12 +3,258 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="profile" />
+        android:background="@drawable/profile_page_background2"
+        android:orientation="vertical">
 
+        <!--Details-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/profile_page_backgorund"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <!--Profile Details-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="112dp"
+                    android:layout_height="112dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/profile_photo_shape"
+                    android:src="@drawable/man_photo_profile" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Eng Jun Cheng"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <!--Role Gender Age Details-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Student"
+                        android:textColor="#CEC3C3"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text=" | "
+                        android:textColor="#CEC3C3"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Male"
+                        android:textColor="#CEC3C3"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text=" | "
+                        android:textColor="#CEC3C3"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="20 years old"
+                        android:textColor="#CEC3C3"
+                        android:textSize="12dp" />
+
+                </LinearLayout>
+                <!--Role Gender Age Details-->
+
+                <!--Height Weight Blood Type-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="horizontal"
+                    android:paddingTop="24dp">
+
+                    <!--Height-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="175 cm"
+                            android:textColor="@color/white"
+                            android:textSize="25sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Height"
+                            android:textColor="#CEC3C3"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+                    <!--Height-->
+
+
+                    <!--Weight-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="60 kg"
+                            android:textColor="@color/white"
+                            android:textSize="25sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Weight"
+                            android:textColor="#CEC3C3"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+                    <!--Weight-->
+
+                    <!--Blood Type-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="O"
+                            android:textColor="@color/white"
+                            android:textSize="25sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Blood Type"
+                            android:textColor="#CEC3C3"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+                    <!--Blood Type-->
+
+                </LinearLayout>
+                <!--Height Weight Blood Type-->
+
+            </LinearLayout>
+            <!--Profile Details-->
+        </LinearLayout>
+        <!--Details-->
+
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="2"
+            android:rowCount="2">
+
+            <Button
+                android:id="@+id/edit_profile_button"
+                android:layout_width="155dp"
+                android:layout_height="122dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/profile_button_icon"
+                android:drawableTop="@drawable/edit_profile_icon"
+                android:paddingTop="20dp"
+                android:text="Edit Profile"
+                android:textAllCaps="false" />
+
+
+            <Button
+                android:id="@+id/prescription_order_button"
+                android:layout_width="155dp"
+                android:layout_height="122dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/profile_button_icon"
+                android:drawableTop="@drawable/medical_prescription_order"
+                android:paddingTop="20dp"
+                android:text="Prescription Order"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/faqs_button"
+                android:layout_width="155dp"
+                android:layout_height="122dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/profile_button_icon"
+                android:drawableTop="@drawable/profile_faq_icon"
+                android:paddingTop="20dp"
+                android:text="FAQs"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/logout_button"
+                android:layout_width="155dp"
+                android:layout_height="122dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/profile_button_icon"
+                android:drawableTop="@drawable/profile_log_out_icon"
+                android:paddingTop="20dp"
+                android:text="Log Out"
+                android:textAllCaps="false" />
+        </GridLayout>
+
+
+    </LinearLayout>
 </FrameLayout>

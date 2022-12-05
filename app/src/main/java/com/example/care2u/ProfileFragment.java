@@ -1,5 +1,6 @@
 package com.example.care2u;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,8 +63,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
 
         root = inflater.inflate(R.layout.fragment_profile, container, false);
-        Button btn = root.findViewById(R.id.edit_profile_button);
-        btn.setOnClickListener(this);
         return root;
     }
 

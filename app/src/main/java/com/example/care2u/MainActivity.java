@@ -13,12 +13,14 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
+import android.widget.Button;
 
 import com.example.care2u.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
         replaceFragment(new HomeFragment());
 
         binding.toolApp.setOnMenuItemClickListener(item -> {
-            switch(item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.logout_button:
-                    Intent intent = new Intent(MainActivity.this,StartingActivity.class);
+                    Intent intent = new Intent(MainActivity.this, StartingActivity.class);
                     startActivity(intent);
                     break;
             }
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         binding.bottomNavView.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.home_button:
                     getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#F9F9F9")));
                     getSupportActionBar().setTitle(Html.fromHtml("<font color='000000'>Welcome Back!</font>"));
@@ -70,9 +72,7 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
-
     }
-
 
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_top,menu);
+        getMenuInflater().inflate(R.menu.menu_top, menu);
         return true;
     }
 }

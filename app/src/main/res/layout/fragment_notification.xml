@@ -3,12 +3,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#01639A"
     tools:context=".NotificationFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- Music Blank Part -->
+    <ImageView
+        android:id="@+id/searchblank_reactangle"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rectangle_white_with_radius"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        />
+
+    <ImageView
+        android:id="@+id/magnifierIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/magnifier_icon"
+        />
+
+    <EditText
+        android:id="@+id/ET_searchField"
+        android:layout_width="273dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:ems="12"
+        android:hint="SEARCH KEY WORD"
+        android:inputType="textPersonName"
+        android:textStyle="bold"
+        />
+
+    <ListView
+        android:id="@+id/LV_friends"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="notification" />
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_marginTop="60dp"
+        />
 
 </FrameLayout>

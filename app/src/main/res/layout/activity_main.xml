@@ -11,6 +11,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tool_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#01639A"
+            android:minHeight="?attr/actionBarSize"
+            app:titleTextColor="@color/white"
+            app:menu="@menu/menu_top"
+            />
+
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment_container"
             android:name="androidx.navigation.fragment.NavHostFragment"
@@ -25,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/bottom_nav_view"
-            app:menu="@menu/menu"/>
+            app:menu="@menu/menu_bottom"/>
     </LinearLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

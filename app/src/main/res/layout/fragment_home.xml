@@ -20,7 +20,7 @@
                 android:id="@+id/marketplace_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/marketplace_button"
+                android:src="@drawable/home_marketplace_button"
                 android:layout_gravity="center_horizontal"
                 android:backgroundTint="#F9F9F9"/>
 
@@ -35,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/meditation_icon"
+                    android:src="@drawable/home_meditation_icon"
                     android:backgroundTint="#F9F9F9"/>
 
                 <ImageButton
@@ -43,7 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/timetable_icon"
+                    android:src="@drawable/home_timetable_icon"
                     android:backgroundTint="#F9F9F9"/>
             </LinearLayout>
 
@@ -58,14 +58,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="#F9F9F9"
-                    android:src="@drawable/health_record_icon" />
+                    android:src="@drawable/home_health_record_icon" />
 
                 <ImageButton
                     android:id="@+id/my_wallet_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/wallet_icon"
+                    android:src="@drawable/home_wallet_icon"
                     android:backgroundTint="#F9F9F9"/>
             </LinearLayout>
 

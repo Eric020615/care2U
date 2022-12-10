@@ -43,7 +43,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.074"
-        app:srcCompat="@drawable/pulse_icon" />
+        app:srcCompat="@drawable/startingactivity_pulse_icon" />
 
     <EditText
         android:id="@+id/ETV_R_Name"

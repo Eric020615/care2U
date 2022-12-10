@@ -31,7 +31,7 @@
                     android:layout_height="112dp"
                     android:layout_gravity="center"
                     android:background="@drawable/profile_photo_shape"
-                    android:src="@drawable/man_photo_profile" />
+                    android:src="@drawable/profile_man_photo_profile" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -206,7 +206,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:background="@drawable/profile_button_icon"
-                android:drawableTop="@drawable/edit_profile_icon"
+                android:drawableTop="@drawable/profile_edit_profile_icon"
                 android:paddingTop="20dp"
                 android:text="Edit Profile"
                 android:textAllCaps="false" />
@@ -221,7 +221,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:background="@drawable/profile_button_icon"
-                android:drawableTop="@drawable/medical_prescription_order"
+                android:drawableTop="@drawable/profile_medical_prescription_order"
                 android:paddingTop="20dp"
                 android:text="Prescription Order"
                 android:textAllCaps="false" />

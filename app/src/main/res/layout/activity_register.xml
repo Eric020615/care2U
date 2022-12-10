@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.067"
-        app:srcCompat="@drawable/pulse_icon" />
+        app:srcCompat="@drawable/startingactivity_pulse_icon" />
 
     <TextView
         android:id="@+id/textView3"

@@ -9,25 +9,25 @@
     <!-- Music Blank Part -->
     <ImageView
         android:id="@+id/searchblank_reactangle"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:background="@drawable/rectangle_white_with_radius"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/notification_rectangle_white_with_radius_blank"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
         />
 
     <ImageView
         android:id="@+id/magnifierIcon"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/magnifier_icon"
+        android:background="@drawable/notification_magnifier_icon"
         />
 
     <EditText
         android:id="@+id/ET_searchField"
-        android:layout_width="273dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:ems="12"

@@ -8,35 +8,27 @@
 
     <!-- BackGround -->
     <ImageView
-        android:id="@+id/lightblue_background"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_gravity="bottom"
-        android:background="@drawable/rectangle_light_blue"
-        />
-
-    <ImageView
         android:id="@+id/white_background"
         android:layout_width="match_parent"
-        android:layout_height="225dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@drawable/rectangle_white"
+        android:background="@drawable/meditation_rectangle_white_background"
         />
 
     <ImageView
         android:id="@+id/lightblue_background_with_radius"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@drawable/rectangle_light_blue_with_radius"
+        android:background="@drawable/meditation_rectangle_light_blue_with_radius_background"
         />
 
     <ImageView
         android:id="@+id/white_background_with_radius"
         android:layout_width="match_parent"
-        android:layout_height="225dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@drawable/rectangle_white_with_radius"
+        android:background="@drawable/meditation_rectangle_white_with_radius_background"
         />
 
     <!-- Meditation Part (Middle Part) -->
@@ -44,26 +36,25 @@
         android:id="@+id/meditationIcon"
         android:layout_width="350dp"
         android:layout_height="325dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="160dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/meditation_logo_icon"
         />
 
     <Button
         android:id="@+id/Btn_expand"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginTop="140dp"
-        android:background="@drawable/expand_alt"
-        />
+        android:background="@drawable/meditation_expand_alt_icon" />
 
     <!-- Music Blank Part -->
     <ImageView
         android:id="@+id/searchblank_reactangle"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:background="@drawable/rectangle_white_with_radius"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/meditation_rectangle_white_with_radius_blank"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
         />
@@ -74,17 +65,18 @@
         android:layout_height="32dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/magnifier_icon"
+        android:background="@drawable/meditation_magnifier_icon"
         />
 
     <EditText
         android:id="@+id/ET_searchField"
-        android:layout_width="273dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:ems="12"
         android:hint="SEARCH MUSIC"
         android:inputType="textPersonName"
+        android:textSize="48px"
         android:textStyle="bold"
         />
 
@@ -106,15 +98,15 @@
 
     <Button
         android:id="@+id/Btn_stop_timer"
-        android:layout_width="350dp"
-        android:layout_height="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="PRESS TO STOP"
         android:textStyle="bold"
         android:textColor="#ffffff"
         android:textSize="40dp"
         android:textAlignment="center"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/rectangle_dark_blue_with_radius"
+        android:background="@drawable/meditation_rectangle_dark_blue_with_radius_button_colour"
         android:layout_marginTop="650dp"
         />
 
@@ -125,7 +117,7 @@
         android:text="0 0 : 0 0 : 0 0"
         android:textStyle="bold"
         android:textColor="#000000"
-        android:textSize="40dp"
+        android:textSize="48dp"
         android:textAlignment="center"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="575dp"
@@ -134,9 +126,9 @@
     <!-- Music View -->
     <ImageView
         android:id="@+id/IV_blue_field"
-        android:layout_width="400dp"
-        android:layout_height="55dp"
-        android:background="@drawable/rectangle_normal_blue_with_radius"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/meditation_rectangle_normal_blue_with_radius_blank"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="65dp"
         />
@@ -145,7 +137,7 @@
         android:id="@+id/Btn_music_detail"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:background="@drawable/music"
+        android:background="@drawable/meditation_music_icon"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="75dp"
         />
@@ -176,42 +168,42 @@
 
     <Button
         android:id="@+id/Btn_previous"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:background="@drawable/backward_step"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/meditation_backward_step_icon"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="80dp"
         />
 
     <Button
         android:id="@+id/Btn_play_music"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:background="@drawable/circle_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/meditation_circle_play_icon"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="80dp"
         />
 
     <Button
         android:id="@+id/Btn_next"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:background="@drawable/forward_step"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/meditation_forward_step_icon"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="80dp"
         />
 
     <Button
         android:id="@+id/Btn_music_list"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:background="@drawable/list_music"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/meditation_list_music_icon"
         android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="160dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginLeft="180dp"
+        android:layout_marginTop="80dp"
         />
 
 

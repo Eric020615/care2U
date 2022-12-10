@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#65AAD0"
-                android:src="@drawable/top_up_icon"
+                android:src="@drawable/wallet_top_up_icon"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton
@@ -114,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#65AAD0"
-                android:src="@drawable/pay_icon"
+                android:src="@drawable/wallet_pay_icon"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton
@@ -124,7 +124,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#65AAD0"
-                android:src="@drawable/transfer_icon"
+                android:src="@drawable/wallet_transfer_icon"
                 tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
         </LinearLayout>
 
@@ -172,7 +172,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@color/white"
-                android:src="@drawable/payment_history"
+                android:src="@drawable/wallet_payment_history"
                 tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
             <ImageView
@@ -188,7 +188,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@color/white"
-                android:src="@drawable/refund_history"
+                android:src="@drawable/wallet_refund_history"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </LinearLayout>

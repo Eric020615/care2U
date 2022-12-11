@@ -73,6 +73,7 @@ public class HomeFragment extends Fragment{
         ImageButton chat_btn = root.findViewById(R.id.chat_button);
         ImageButton meditation_btn = root.findViewById(R.id.meditation_button);
         ImageButton e_wallet_btn = root.findViewById(R.id.my_wallet_button);
+        ImageButton marketplace_btn = root.findViewById(R.id.marketplace_button);
         health_record_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,10 +101,16 @@ public class HomeFragment extends Fragment{
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
-
-
             }
         });
+        marketplace_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),MarketplaceDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return root;
 
     }

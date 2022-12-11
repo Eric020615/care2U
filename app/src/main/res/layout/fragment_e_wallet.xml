@@ -7,164 +7,152 @@
     android:layout_height="match_parent"
     tools:context=".EWalletFragment">
 
-    <ScrollView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/blue"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-
-            <LinearLayout
-                android:id="@+id/BalanceText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:orientation="vertical"
-                android:layout_marginTop="30dp"
-                android:background ="@drawable/rectangle_small_lightblue">
-
-                <TextView
-                    android:id="@+id/Balance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="5dp"
-                    android:text="Balance"
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/BalanceCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="5dp"
-                    android:text="RM1000.00"
-                    android:textColor="@color/white"
-                    android:textSize="25dp" />
-
-            </LinearLayout>
-
-
-
-            <LinearLayout
-                android:id="@+id/DebtText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
-                android:orientation="vertical"
-                android:background="@drawable/rectangle_small_lightblue" >
-
-
-                <TextView
-                    android:id="@+id/Debt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="5dp"
-                    android:text="Debt"
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/DebtCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="5dp"
-                    android:text="RM50.00"
-                    android:textColor="#DB0000"
-                    android:textSize="25dp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/rectangle_small_lightblue"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:background="@drawable/rectangle_light_blue_png"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageButton
                 android:id="@+id/TopUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#65AAD0"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="250dp"
+                android:background="#00B0CB"
                 android:src="@drawable/wallet_top_up_icon"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton
                 android:id="@+id/Pay"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#65AAD0"
+                android:layout_marginLeft="55dp"
+                android:layout_marginTop="250dp"
+                android:background="#00B0CB"
                 android:src="@drawable/wallet_pay_icon"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton
                 android:id="@+id/Transfer"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#65AAD0"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="250dp"
+                android:background="#00B0CB"
                 android:src="@drawable/wallet_transfer_icon"
                 tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
         </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginBottom="495dp"
+            android:background="@color/blue"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/BalanceText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="90dp"
+                android:src="@drawable/wallet_page_small_rectangle_light_blue_" />
+
+            <ImageView
+                android:id="@+id/DebtText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/wallet_page_small_rectangle_light_blue_" />
+
+            <TextView
+                android:id="@+id/Balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="170dp"
+                android:layout_marginTop="-135dp"
+                android:text="Balance"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/BalanceCount"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="0dp"
+                android:text="RM1000.00"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/Debt"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="180dp"
+                android:layout_marginTop="10dp"
+                android:text="Debt"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/DebtCount"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="160dp"
+                android:layout_marginTop="-15dp"
+                android:text="RM50.00"
+                android:textColor="#DB0000"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/LinearLayout"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/rectangle_white_png"
-            android:layout_marginTop="20dp">
+            android:layout_height="match_parent"
+            android:layout_marginTop="330dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/Transaction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Transaction History"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="20dp"
-                android:textSize="15sp" />
+                android:text="Transaction History"
+                android:textSize="20dp" />
 
 
             <TextView
                 android:id="@+id/Seeall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="280dp"
+                android:layout_marginTop="-25dp"
                 android:text="See All"
                 android:textColor="@color/blue"
-                android:textSize="15sp" />
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/LinearLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="vertical">
+                android:textSize="20dp" />
 
             <ImageButton
                 android:id="@+id/PaymentHistory"
@@ -179,23 +167,20 @@
                 android:id="@+id/line1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/line_icon" />
+                android:layout_marginTop="15dp"
+                android:src="@drawable/chat_page_line_icon" />
 
             <ImageButton
                 android:id="@+id/RefundHistory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:background="@color/white"
                 android:src="@drawable/wallet_refund_history"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </LinearLayout>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        </LinearLayout>
-
-    </ScrollView>
 </FrameLayout>

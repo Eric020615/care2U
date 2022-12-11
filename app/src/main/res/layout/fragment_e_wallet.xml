@@ -10,16 +10,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/blue">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="240dp"
-            android:layout_marginBottom="401dp"
-            android:background="#00B0CB"
-            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:background="@drawable/rectangle_light_blue_png"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="250dp"
                 android:background="#00B0CB"
                 android:src="@drawable/wallet_top_up_icon"
                 tools:ignore="SpeakableTextPresentCheck" />
@@ -39,8 +36,8 @@
                 android:id="@+id/Pay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="170dp"
-                android:layout_marginTop="-80dp"
+                android:layout_marginLeft="55dp"
+                android:layout_marginTop="250dp"
                 android:background="#00B0CB"
                 android:src="@drawable/wallet_pay_icon"
                 tools:ignore="SpeakableTextPresentCheck" />
@@ -49,8 +46,8 @@
                 android:id="@+id/Transfer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="290dp"
-                android:layout_marginTop="-80dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="250dp"
                 android:background="#00B0CB"
                 android:src="@drawable/wallet_transfer_icon"
                 tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
@@ -58,8 +55,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="240dp"
+            android:layout_height="250dp"
             android:layout_marginBottom="495dp"
+            android:background="@color/blue"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -150,7 +148,7 @@
                 android:id="@+id/Seeall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="330dp"
+                android:layout_marginLeft="280dp"
                 android:layout_marginTop="-25dp"
                 android:text="See All"
                 android:textColor="@color/blue"

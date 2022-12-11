@@ -1,5 +1,6 @@
 package com.example.care2u;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 /**
@@ -63,16 +65,49 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
 
         root = inflater.inflate(R.layout.fragment_profile, container, false);
+        Button faq_button = root.findViewById(R.id.faqs_button);
+        Button edit_profile_button = root.findViewById(R.id.edit_profile_button);
+        Button log_out_button = root.findViewById(R.id.logout_button);
+        log_out_button.setOnClickListener(this);
+        faq_button.setOnClickListener(this);
+        edit_profile_button.setOnClickListener(this);
         return root;
     }
 
     @Override
     public void onClick(View view) {
-//        switch (view.getId()){
-//            case R.id.edit_profile_button:
-//                Intent intent = new Intent(getActivity(),HealthRecordActivity.class);
-//                startActivity(intent);
-//                break;
-//        }
+        final Intent[] intent = new Intent[1];
+        switch (view.getId()){
+            case R.id.edit_profile_button:
+                intent[0] = new Intent(getActivity(),EditProfileActivity.class);
+                startActivity(intent[0]);
+                break;
+            case R.id.faqs_button:
+                intent[0] = new Intent(getActivity(),FAQActivity.class);
+                startActivity(intent[0]);
+                break;
+            case R.id.logout_button:
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Log Out");
+                builder.setMessage("Are you sure to log out");
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        intent[0] = new Intent(getActivity(),LoginActivity.class);
+                        startActivity(intent[0]);;
+                    }
+                });
+
+                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+        }
     }
 }

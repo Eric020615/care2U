@@ -3,197 +3,186 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/profile_page_background2"
     android:orientation="vertical"
     tools:context=".ProfileFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/profile_page_background2"
         android:orientation="vertical">
 
-        <!--Details-->
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/profile_page_backgorund"
-            android:orientation="vertical"
-            android:padding="10dp">
+            >
 
-            <!--Profile Details-->
-            <LinearLayout
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/profile_picture_IV"
+                android:layout_width="112dp"
+                android:layout_height="112dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/profile_photo_shape"
+                android:src="@drawable/profile_man_photo_profile" />
+
+            <TextView
+                android:id="@+id/name_TV"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_below="@+id/profile_picture_IV"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="Eng Jun Cheng"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
 
-                <ImageView
-                    android:layout_width="112dp"
-                    android:layout_height="112dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/profile_photo_shape"
-                    android:src="@drawable/profile_man_photo_profile" />
+            <TextView
+                android:id="@+id/role_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name_TV"
+                android:layout_alignTop="@id/gender_TV"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_marginRight="20dp"
+                android:layout_toLeftOf="@+id/gender_TV"
+                android:text="Student of UM"
+                android:textColor="#CEC3C3"
+                android:textSize="12dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Eng Jun Cheng"
-                    android:textColor="@color/white"
-                    android:textSize="20dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name_TV"
+                android:layout_alignTop="@+id/gender_TV"
+                android:layout_centerHorizontal="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/gender_TV"
+                android:text=" | "
+                android:textColor="#CEC3C3"
+                android:textSize="12dp" />
 
-                <!--Role Gender Age Details-->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingTop="5dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Student"
-                        android:textColor="#CEC3C3"
-                        android:textSize="12dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text=" | "
-                        android:textColor="#CEC3C3"
-                        android:textSize="12dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Male"
-                        android:textColor="#CEC3C3"
-                        android:textSize="12dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text=" | "
-                        android:textColor="#CEC3C3"
-                        android:textSize="12dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="20 years old"
-                        android:textColor="#CEC3C3"
-                        android:textSize="12dp" />
-
-                </LinearLayout>
-                <!--Role Gender Age Details-->
-
-                <!--Height Weight Blood Type-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:orientation="horizontal"
-                    android:paddingTop="24dp">
-
-                    <!--Height-->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="175 cm"
-                            android:textColor="@color/white"
-                            android:textSize="25sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="Height"
-                            android:textColor="#CEC3C3"
-                            android:textSize="12sp" />
-
-                    </LinearLayout>
-                    <!--Height-->
+            <TextView
+                android:id="@+id/gender_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name_TV"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="Male"
+                android:textColor="#CEC3C3"
+                android:textSize="12dp" />
 
 
-                    <!--Weight-->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name_TV"
+                android:layout_alignTop="@+id/gender_TV"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/gender_TV"
+                android:text=" | "
+                android:textColor="#CEC3C3"
+                android:textSize="12dp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="60 kg"
-                            android:textColor="@color/white"
-                            android:textSize="25sp" />
+            <TextView
+                android:id="@+id/age_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name_TV"
+                android:layout_alignTop="@+id/gender_TV"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/gender_TV"
+                android:text="20 years old"
+                android:textColor="#CEC3C3"
+                android:textSize="12dp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="Weight"
-                            android:textColor="#CEC3C3"
-                            android:textSize="12sp" />
+            <TextView
+                android:id="@+id/height_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/role_TV"
+                android:layout_alignTop="@id/weight_TV"
+                android:layout_gravity="center"
+                android:layout_marginRight="40dp"
+                android:layout_toLeftOf="@id/weight_TV"
+                android:text="175 cm"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
 
-                    </LinearLayout>
-                    <!--Weight-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/w"
+                android:layout_gravity="center"
+                android:layout_marginRight="75dp"
+                android:layout_toLeftOf="@+id/w"
+                android:text="Height"
+                android:textColor="#CEC3C3"
+                android:textSize="12sp" />
 
-                    <!--Blood Type-->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+            <TextView
+                android:id="@+id/weight_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/role_TV"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:text="65 kg"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="O"
-                            android:textColor="@color/white"
-                            android:textSize="25sp" />
+            <TextView
+                android:id="@+id/w"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/weight_TV"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="15dp"
+                android:text="Weight"
+                android:textColor="#CEC3C3"
+                android:textSize="12sp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="Blood Type"
-                            android:textColor="#CEC3C3"
-                            android:textSize="12sp" />
+            <TextView
+                android:id="@+id/bloodtype_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/weight_TV"
+                android:layout_gravity="center"
+                android:layout_marginLeft="65dp"
+                android:layout_toRightOf="@id/weight_TV"
+                android:text="O"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
 
-                    </LinearLayout>
-                    <!--Blood Type-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/w"
+                android:layout_gravity="center"
+                android:layout_marginLeft="60dp"
+                android:layout_toRightOf="@+id/w"
+                android:text="Blood Type"
+                android:textColor="#CEC3C3"
+                android:textSize="12sp" />
 
-                </LinearLayout>
-                <!--Height Weight Blood Type-->
 
-            </LinearLayout>
-            <!--Profile Details-->
-        </LinearLayout>
-        <!--Details-->
-
+        </RelativeLayout>
 
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/profile_page_background2"
             android:columnCount="2"
             android:rowCount="2">
 
@@ -254,7 +243,7 @@
                 android:text="Log Out"
                 android:textAllCaps="false" />
         </GridLayout>
-
-
     </LinearLayout>
+
+
 </FrameLayout>

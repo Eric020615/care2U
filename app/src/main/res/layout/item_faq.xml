@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/question_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:text="How to register an account"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="8dp"/>
+
+    <ImageView
+        android:id="@+id/show_ans_IV"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/faq_arrow_down"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/answer_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:textColor="#01639A"
+        android:text=""
+        android:layout_below="@+id/question_tv"
+        android:background="#2200B0CB"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:visibility="gone"
+        android:paddingBottom="10dp"/>
+
+</RelativeLayout>

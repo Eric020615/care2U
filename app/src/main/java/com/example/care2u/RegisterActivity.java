@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 public class RegisterActivity extends AppCompatActivity {
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://care2u-99f78-default-rtdb.firebaseio.com/");
+
     FirebaseAuth mAuth;
 
     @Override
@@ -80,7 +83,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 });
                             }
                             else{
-                                Toast.makeText(RegisterActivity.this,"Failed to register!",Toast.LENGTH_SHORT).show();
+                                FirebaseAuthException e = (FirebaseAuthException )task.getException();
+                                Toast.makeText(RegisterActivity.this,"Failed to register! "+e.getMessage(),Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

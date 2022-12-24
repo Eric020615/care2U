@@ -32,51 +32,50 @@ public class ForgotPassword extends AppCompatActivity {
         editTextPwdResetEmail = findViewById(R.id.forgotPassword_email);
         buttonPwdReset = findViewById(R.id.ResetPassword);
 
-        buttonPwdReset.setOnClickListener(new View.OnClickListener(){
-        @Override
-           public void onClick(View v){
-             String email = editTextPwdResetEmail.getText().toString();
+        buttonPwdReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = editTextPwdResetEmail.getText().toString();
 
-             if(TextUtils.isEmpty(email)){
-                 Toast.makeText(ForgotPassword.this, "Please enter your registered email",Toast.LENGTH_SHORT).show();
-                 editTextPwdResetEmail.setError("Email is required");
-                 editTextPwdResetEmail.requestFocus();
-             } else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                 Toast.makeText(ForgotPassword.this, "Please enter valid email",Toast.LENGTH_SHORT).show();
-                 editTextPwdResetEmail.setError("Valid email is required");
-                 editTextPwdResetEmail.requestFocus();
-             } else{
-                 resetPassword(email);
-             }
-        }
+                if (TextUtils.isEmpty(email)) {
+                    Toast.makeText(ForgotPassword.this, "Please enter your registered email", Toast.LENGTH_SHORT).show();
+                    editTextPwdResetEmail.setError("Email is required");
+                    editTextPwdResetEmail.requestFocus();
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    Toast.makeText(ForgotPassword.this, "Please enter valid email", Toast.LENGTH_SHORT).show();
+                    editTextPwdResetEmail.setError("Valid email is required");
+                    editTextPwdResetEmail.requestFocus();
+                } else {
+                    resetPassword(email);
+                }
+            }
         });
     }
 
-            private void resetPassword(String email){
-               authProfile =  FirebaseAuth.getInstance();
-               authProfile.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
-                   @Override
-                   public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(ForgotPassword.this, "Please check your email for password reset link", Toast.LENGTH_SHORT).show();
+    private void resetPassword(String email) {
+        authProfile = FirebaseAuth.getInstance();
+        authProfile.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(ForgotPassword.this, "Please check your email for password reset link", Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent (ForgotPassword.this, MainActivity.class);
+                    Intent intent = new Intent(ForgotPassword.this, StartingActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    try {
+                        throw task.getException();
+                    } catch (FirebaseAuthInvalidUserException e) {
+                        editTextPwdResetEmail.setError("User does not exits or is no longer valid. Please register again");
+                    } catch (Exception e) {
+                        Log.e(TAG, e.getMessage());
+                        Toast.makeText(ForgotPassword.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
 
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);
-                            finish();
-                        }else{
-                            try{
-                                throw task.getException();
-                            } catch(FirebaseAuthInvalidUserException e){
-                                editTextPwdResetEmail.setError("User does not exits or is no longer valid. Please register again");
-                            } catch(Exception e){
-                                Log.e(TAG, e.getMessage());
-                                Toast.makeText(ForgotPassword.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-
-                        }
-           }
-       });
+                }
+            }
+        });
     }
 }

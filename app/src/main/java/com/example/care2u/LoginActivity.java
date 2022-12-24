@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,6 +36,18 @@ public class LoginActivity extends AppCompatActivity {
         final EditText email = findViewById(R.id.login_email);
         final EditText password = findViewById(R.id.login_password);
         mAuth = FirebaseAuth.getInstance();
+
+        TextView forgotPassword = findViewById(R.id.TV_ForgotPassword);
+
+        forgotPassword.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Toast.makeText(LoginActivity.this,"You can reset your password now!.",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), ForgotPassword.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override

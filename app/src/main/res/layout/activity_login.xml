@@ -48,13 +48,13 @@
     <EditText
         android:id="@+id/login_email"
         android:layout_width="328dp"
-        android:layout_height="46dp"
+        android:layout_height="48dp"
         android:backgroundTint="#01FFF6"
         android:ems="8"
         android:hint="abc@gmail.com"
         android:inputType="textEmailAddress"
-        android:textColorHint="#78BEE5"
         android:textColor="#FFFFFF"
+        android:textColorHint="#78BEE5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.421"
@@ -93,13 +93,13 @@
     <EditText
         android:id="@+id/login_password"
         android:layout_width="328dp"
-        android:layout_height="46dp"
+        android:layout_height="48dp"
         android:backgroundTint="#01FFF6"
         android:ems="8"
         android:hint="3s@dads12"
         android:inputType="textPassword"
-        android:textColorHint="#78BEE5"
         android:textColor="#FFFFFF"
+        android:textColorHint="#78BEE5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.421"
@@ -135,6 +135,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.754" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

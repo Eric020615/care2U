@@ -58,57 +58,31 @@ public class RegisterActivity extends AppCompatActivity {
                 final String email_text = email.getText().toString();
                 final String password_text = password.getText().toString();
                 final String confirm_password_text = confirm_password.getText().toString();
-                if ((name_text.isEmpty()) ||(phone_text.isEmpty())|| (email_text.isEmpty()) || (password_text.isEmpty()) || (confirm_password_text.isEmpty())) {
+                if ((name_text.isEmpty()) || (phone_text.isEmpty()) || (email_text.isEmpty()) || (password_text.isEmpty()) || (confirm_password_text.isEmpty())) {
                     Toast.makeText(RegisterActivity.this, "Please do not leave the empty space", Toast.LENGTH_SHORT).show();
                 } else if (!password_text.equals(confirm_password_text)) {
                     Toast.makeText(RegisterActivity.this, "The password you type not match", Toast.LENGTH_SHORT).show();
                 } else {
-                    mAuth.createUserWithEmailAndPassword(email_text, password_text)
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    mAuth.createUserWithEmailAndPassword(email_text, password_text).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
-                                User user = new User(name_text,email_text,phone_text);
-                                FirebaseDatabase.getInstance().getReference("User")
-                                        .child(FirebaseAuth.getInstance().getUid())
-                                        .setValue(user)
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            if (task.isSuccessful()) {
+                                User user = new User(name_text, email_text, phone_text, FirebaseAuth.getInstance().getUid());
+                                FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()){
-                                            Toast.makeText(RegisterActivity.this,"Account had been registered successfully.",Toast.LENGTH_SHORT).show();
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(RegisterActivity.this, "Account had been registered successfully.", Toast.LENGTH_SHORT).show();
                                             finish();
                                         }
                                     }
                                 });
-                            }
-                            else{
-                                FirebaseAuthException e = (FirebaseAuthException )task.getException();
-                                Toast.makeText(RegisterActivity.this,"Failed to register! "+e.getMessage(),Toast.LENGTH_SHORT).show();
+                            } else {
+                                FirebaseAuthException e = (FirebaseAuthException) task.getException();
+                                Toast.makeText(RegisterActivity.this, "Failed to register! " + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
-
-//                    databaseReference.child("email_address").addListenerForSingleValueEvent(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                            if (snapshot.hasChild(email_text)) {
-//                                Toast.makeText(RegisterActivity.this, "This email address registered before", Toast.LENGTH_SHORT).show();
-//
-//                            }
-//                            else{
-//                                databaseReference.child("email_address").child(email_text).child("username").setValue(name_text);
-//                                databaseReference.child("email_address").child(email_text).child("phone_num").setValue(phone_text);
-//                                databaseReference.child("email_address").child(email_text).child("password").setValue(password_text);
-//
-//                                Toast.makeText(RegisterActivity.this, "You registered successfully", Toast.LENGTH_SHORT).show();
-//                            }
-//                        }
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError error) {
-//
-//                        }
-//                    });
                 }
             }
         });

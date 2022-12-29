@@ -56,9 +56,8 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new ScheduleFragment());
                     break;
                 case R.id.chat_button:
-                    getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#01639A")));
-                    getSupportActionBar().setTitle("Chat");
-                    replaceFragment(new ChatFragment());
+                    Intent intent=new Intent(getApplicationContext(),ChatActivity.class);
+                    startActivity(intent);
                     break;
                 case R.id.notification_button:
                     getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#01639A")));

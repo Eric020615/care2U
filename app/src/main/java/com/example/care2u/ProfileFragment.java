@@ -7,9 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,6 +77,22 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         Button faq_button = root.findViewById(R.id.faqs_button);
         Button edit_profile_button = root.findViewById(R.id.edit_profile_button);
         Button log_out_button = root.findViewById(R.id.logout_button);
+        TextView name = root.findViewById(R.id.name_TV);
+        FirebaseAuth Auth=FirebaseAuth.getInstance();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        String uid=Auth.getCurrentUser().getUid();
+        databaseReference.child(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user=snapshot.getValue(User.class);
+                name.setText(user.getUsername());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         log_out_button.setOnClickListener(this);
         faq_button.setOnClickListener(this);
         edit_profile_button.setOnClickListener(this);
@@ -93,8 +118,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                        mAuth.signOut();
                         intent[0] = new Intent(getActivity(),LoginActivity.class);
-                        startActivity(intent[0]);;
+                        startActivity(intent[0]);
                     }
                 });
 

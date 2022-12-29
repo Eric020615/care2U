@@ -74,7 +74,7 @@ public class ConversationActivity extends AppCompatActivity {
             }
         });
 
-        binding.sendBtn.setOnClickListener(new View.OnClickListener() {
+        binding.conversationBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(),ChatActivity.class);

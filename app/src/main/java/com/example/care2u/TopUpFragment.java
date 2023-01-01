@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.care2u.adapter.TransactionAdapter;
+import com.example.care2u.entity.TransactionModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +25,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.UUID;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,6 +46,8 @@ public class TopUpFragment extends DialogFragment {
     private View root;
     private String balance;
     private Double TopUpAmount = 0.00;
+    private String order;
+    private String key;
 
     public TopUpFragment() {
         // Required empty public constructor
@@ -74,10 +80,11 @@ public class TopUpFragment extends DialogFragment {
         }
     }
 
-    public Dialog onCreateDialog(){
+    public Dialog onCreateDialog() {
         return new AlertDialog.Builder(requireContext())
                 .setMessage("Top Up")
-                .setPositiveButton("ok", (dialog, which) -> {} )
+                .setPositiveButton("ok", (dialog, which) -> {
+                })
                 .create();
     }
 
@@ -85,8 +92,9 @@ public class TopUpFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        root =  inflater.inflate(R.layout.fragment_top_up, container, false);
+        root = inflater.inflate(R.layout.fragment_top_up, container, false);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Assets");
+        DatabaseReference transactionReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://care2u-99f78-default-rtdb.firebaseio.com/");
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String uid = mAuth.getCurrentUser().getUid();
         Button TopUpButton = root.findViewById(R.id.TopUpButton);
@@ -106,15 +114,37 @@ public class TopUpFragment extends DialogFragment {
         TopUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if ((Double.parseDouble(Amount.getText().toString())<=0)){
-                    Toast.makeText(getActivity(),"Please type in valid amount",Toast.LENGTH_LONG).show();
-                }
-                else {
+                if ((Double.parseDouble(Amount.getText().toString()) <= 0)) {
+                    Toast.makeText(getActivity(), "Please type in valid amount", Toast.LENGTH_LONG).show();
+                } else {
                     Double TopUpAmount = Double.parseDouble(balance) + Double.parseDouble(Amount.getText().toString());
                     String updateAmount = String.format("%.2f", TopUpAmount);
                     databaseReference.child(uid).child("Money").setValue(updateAmount).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
+                            TransactionModel transactionModel = new TransactionModel(Amount.getText().toString(), "");
+                            transactionReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                    key = "1";
+
+                                    if (snapshot.hasChild("Transaction_History")) {
+                                        if (snapshot.child("Transaction_History").hasChild(uid)) {
+                                            key = String.valueOf(snapshot.child("Transaction_History").child(uid).getChildrenCount()) + 1;
+                                            transactionReference.child("Transaction_History").child(uid).child(key).setValue(transactionModel);
+                                        }
+                                    } else {
+                                        transactionReference.child("Transaction_History").child(uid).child(key).setValue(transactionModel);
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+                            System.out.println(key);
                             Toast.makeText(getActivity(), "Reload Sucessfully", Toast.LENGTH_LONG).show();
                             dismiss();
                         }

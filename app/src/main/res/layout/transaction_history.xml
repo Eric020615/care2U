@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/transaction_row">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/transaction_icon"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/transaction_icon"
+        />
+
+    <TextView
+        android:id="@+id/Reload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reload"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@id/transaction_icon"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Reload"
+        android:layout_toRightOf="@id/transaction_icon"
+        android:layout_marginLeft="15dp"
+        android:text="Transfer to Wallet"
+        android:textSize="10sp"
+        />
+
+    <TextView
+        android:id="@+id/transaction_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/blue"
+        android:text=""
+        android:textSize="20sp"
+        android:layout_alignBaseline="@id/Reload"
+        android:layout_marginRight="20dp"
+        />
+
+</RelativeLayout>

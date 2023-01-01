@@ -94,6 +94,7 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/calculate_BMI_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -107,6 +108,7 @@
                 android:textSize="25dp" />
 
             <Button
+                android:id="@+id/depression_test_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -120,6 +122,7 @@
                 android:textSize="25dp" />
 
             <Button
+                android:id="@+id/consultation_history_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -133,6 +136,7 @@
                 android:textSize="25dp" />
 
             <Button
+                android:id="@+id/reference_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

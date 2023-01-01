@@ -9,6 +9,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.text.DecimalFormat;
 
 public class CalculateBMIActivity extends AppCompatActivity implements View.OnClickListener {
@@ -17,6 +21,9 @@ public class CalculateBMIActivity extends AppCompatActivity implements View.OnCl
     private EditText weight_et;
     private TextView result_tv;
     private TextView status_tv;
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +63,14 @@ public class CalculateBMIActivity extends AppCompatActivity implements View.OnCl
         }else if(bmi <=18.5){
             status = "Underweight";
         }
-        DecimalFormat df = new DecimalFormat("#.#");
-        result_tv.setText(String.valueOf(df.format(bmi)));
+        result_tv.setText(String.format("%.1f",bmi));
         status_tv.setText(status);
 
         height_et.setText("");
         weight_et.setText("");
+
+        String uid=mAuth.getCurrentUser().getUid();
+        databaseReference.child(uid).child("BMI").setValue(String.format("%.1f",bmi));
     }
 }
 

@@ -61,4 +61,12 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/chat_root_layout"
+        android:background="#808080"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"/>
+
 </RelativeLayout>

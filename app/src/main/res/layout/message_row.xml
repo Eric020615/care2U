@@ -12,7 +12,7 @@
         android:id="@+id/message"
         android:padding="15dp"
         android:text="message"/>
-
 </LinearLayout>
+
 
 

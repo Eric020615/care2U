@@ -72,11 +72,18 @@ public class RegisterActivity extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
+                                            FirebaseDatabase.getInstance().getReference("Assets").child(FirebaseAuth.getInstance().getUid()).child("Money").setValue("0").addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+
+                                                }
+                                            });
                                             Toast.makeText(RegisterActivity.this, "Account had been registered successfully.", Toast.LENGTH_SHORT).show();
                                             finish();
                                         }
                                     }
                                 });
+
                             } else {
                                 FirebaseAuthException e = (FirebaseAuthException) task.getException();
                                 Toast.makeText(RegisterActivity.this, "Failed to register! " + e.getMessage(), Toast.LENGTH_SHORT).show();

@@ -29,7 +29,6 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding= ActivityChatBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        //setSupportActionBar(findViewById(R.id.chat_tool_bar));
         mAuth=FirebaseAuth.getInstance();
 
         databaseReference= FirebaseDatabase.getInstance().getReference("Users");

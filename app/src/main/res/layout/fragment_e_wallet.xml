@@ -21,17 +21,18 @@
                 android:id="@+id/linearLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
+
 
                 <LinearLayout
                     android:id="@+id/BalanceText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:orientation="vertical"
                     android:layout_marginTop="30dp"
-                    android:background ="@drawable/wallet_page_small_rectangle_light_blue_">
+                    android:background="@drawable/wallet_page_small_rectangle_light_blue_"
+                    android:orientation="vertical">
+
 
                     <TextView
                         android:id="@+id/Balance"
@@ -49,100 +50,65 @@
                         android:layout_height="45dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="5dp"
-                        android:text="RM1000.00"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textSize="25dp" />
 
-                </LinearLayout>
-
-
-
-                <LinearLayout
-                    android:id="@+id/DebtText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="30dp"
-                    android:orientation="vertical"
-                    android:background="@drawable/wallet_page_small_rectangle_light_blue_" >
-
-
-                    <TextView
-                        android:id="@+id/Debt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="5dp"
-                        android:text="Debt"
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:id="@+id/DebtCount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="5dp"
-                        android:text="RM50.00"
-                        android:textColor="#DB0000"
-                        android:textSize="25dp" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_height="match_parent"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/wallet_page_small_rectangle_light_blue_"
+                android:background="@color/white"
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/TopUp"
+                    android:id="@+id/TopUpBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#65AAD0"
+                    android:background="@color/blue"
                     android:src="@drawable/wallet_top_up_icon"
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <ImageButton
-                    android:id="@+id/Pay"
-
+                    android:id="@+id/PayBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#65AAD0"
+                    android:background="@color/blue"
                     android:src="@drawable/wallet_pay_icon"
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <ImageButton
-                    android:id="@+id/Transfer"
-
+                    android:id="@+id/TransferBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#65AAD0"
-                    android:src="@drawable/wallet_transfer_icon"
+                    android:background="@color/blue"
+                    android:src="@drawable/wallet_voucher_icon"
                     tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
             </LinearLayout>
 
             <RelativeLayout
                 android:id="@+id/LinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/rectangle_white_png"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="15dp"
+                android:background="@drawable/rectangle_white_png">
 
                 <TextView
                     android:id="@+id/Transaction"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Transaction History"
-                    android:layout_marginTop="10dp"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Transaction History"
                     android:textSize="15sp" />
 
 
@@ -164,29 +130,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:orientation="vertical">
+                android:orientation="vertical" />
 
-                <ImageButton
-                    android:id="@+id/PaymentHistory"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@color/white"
-                    android:src="@drawable/wallet_payment_history"
-                    tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
-
-
-                <ImageButton
-                    android:id="@+id/RefundHistory"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/white"
-                    android:src="@drawable/wallet_refund_history"
-                    tools:ignore="SpeakableTextPresentCheck" />
-
-            </LinearLayout>
-
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white" />
 
 
         </LinearLayout>

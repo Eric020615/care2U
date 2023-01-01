@@ -1,4 +1,4 @@
-package com.example.care2u;
+package com.example.care2u.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.care2u.entity.MessageModel;
+import com.example.care2u.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;

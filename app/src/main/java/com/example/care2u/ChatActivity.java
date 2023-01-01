@@ -6,17 +6,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 
+import com.example.care2u.adapter.ChatAdapter;
 import com.example.care2u.databinding.ActivityChatBinding;
-import com.example.care2u.databinding.ActivityMainBinding;
+import com.example.care2u.entity.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
     ActivityChatBinding binding;

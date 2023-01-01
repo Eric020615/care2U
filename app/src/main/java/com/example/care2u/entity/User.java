@@ -1,4 +1,4 @@
-package com.example.care2u;
+package com.example.care2u.entity;
 
 public class User {
 

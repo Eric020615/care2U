@@ -1,4 +1,4 @@
-package com.example.care2u;
+package com.example.care2u.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,9 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.care2u.ConversationActivity;
+import com.example.care2u.R;
+import com.example.care2u.entity.User;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> {
 
@@ -55,7 +58,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(context,ConversationActivity.class);
+                Intent intent=new Intent(context, ConversationActivity.class);
                 intent.putExtra("id", user.getUserid());
                 intent.putExtra("name",user.getUsername());
                 context.startActivity(intent);

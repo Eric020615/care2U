@@ -1,10 +1,15 @@
 package com.example.care2u;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,8 +21,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.w3c.dom.Text;
 
 public class HealthRecordActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -71,10 +74,28 @@ public class HealthRecordActivity extends AppCompatActivity implements View.OnCl
                 startActivity(intent);
                 break;
             case R.id.depression_test_button:
+                intent = new Intent(HealthRecordActivity.this,DepressionTestActivity.class);
+                startActivity(intent);
                 break;
             case R.id.consultation_history_button:
                 break;
             case R.id.reference_button:
+                View popup = getLayoutInflater().inflate(R.layout.popup_window_reference_bmi_depression,null);
+                Button ok = popup.findViewById(R.id.ok_btn);
+
+                PopupWindow popupWindow = new PopupWindow(getApplicationContext());
+                popupWindow.setOutsideTouchable(false);
+                popupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                popupWindow.setContentView(popup);
+                popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+                popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+                popupWindow.showAtLocation(view, Gravity.CENTER,0,0);
+                ok.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        popupWindow.dismiss();
+                    }
+                });
                 break;
 
         }

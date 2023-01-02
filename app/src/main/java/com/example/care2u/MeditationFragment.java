@@ -90,7 +90,6 @@ public class MeditationFragment extends Fragment {
                     currentSong = (songs.length - 1) % songs.length;
                 }
                 sound = MediaPlayer.create(getActivity(),songs[currentSong]);
-                startMusic();
             }
         });
 
@@ -104,7 +103,6 @@ public class MeditationFragment extends Fragment {
                 // increase the index to the next music
                 currentSong = (currentSong + 1) % songs.length;
                 sound = MediaPlayer.create(getActivity(),songs[currentSong]);
-                startMusic();
             }
         });
 

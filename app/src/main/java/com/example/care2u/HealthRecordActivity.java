@@ -38,10 +38,19 @@ public class HealthRecordActivity extends AppCompatActivity implements View.OnCl
         Button consultation_history_button = findViewById(R.id.consultation_history_button);
         Button reference_button = findViewById(R.id.reference_button);
         TextView result_BMI = findViewById(R.id.ResultBMI);
+        TextView result_DEP = findViewById(R.id.ResultDEP);
         databaseReference.child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String BMI=snapshot.child("BMI").getValue(String.class);
+                String Depression=snapshot.child("Depression").getValue(String.class);
+                if (!snapshot.hasChild("Depression")){
+                    result_DEP.setText("-");
+                }
+                else{
+                    result_DEP.setText(Depression);
+                }
+
                 if(!snapshot.hasChild("BMI")){
                     result_BMI.setText("-");
                 }

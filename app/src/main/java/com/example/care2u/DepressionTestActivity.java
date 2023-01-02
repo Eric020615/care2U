@@ -15,21 +15,25 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.care2u.adapter.DepTestAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 public class DepressionTestActivity extends AppCompatActivity {
 
     ArrayList<String> dep_test_question_list = new ArrayList<>();
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");;
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String uid=mAuth.getCurrentUser().getUid();
         setContentView(R.layout.activity_depression_test);
         RecyclerView dep_test_rv = findViewById(R.id.dep_test_rv);
         Button submit = findViewById(R.id.submit_btn);
-
-
         ImageView close_iv = findViewById(R.id.close_iv);
         close_iv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +59,7 @@ public class DepressionTestActivity extends AppCompatActivity {
                 TextView score_tv = popup.findViewById(R.id.score_tv);
                 TextView level_tv = popup.findViewById(R.id.level_tv);
                 score_tv.setText(String.valueOf(total));
+                databaseReference.child(uid).child("Depression").setValue(String.format("%.1f",total));
                 level_tv.setText(String.valueOf(determineLevel(total)));
 
                 PopupWindow popupWindow = new PopupWindow(getApplicationContext());

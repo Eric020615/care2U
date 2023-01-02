@@ -1,12 +1,16 @@
 package com.example.care2u;
 
+
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 /**
@@ -67,6 +72,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -79,6 +85,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         Button edit_profile_button = root.findViewById(R.id.edit_profile_button);
         Button log_out_button = root.findViewById(R.id.logout_button);
         TextView name = root.findViewById(R.id.name_TV);
+
+        showUserData();
+        passUserData();
+
         FirebaseAuth Auth=FirebaseAuth.getInstance();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         String uid=Auth.getCurrentUser().getUid();
@@ -137,5 +147,66 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 dialog.show();
 
         }
+    }
+
+    public void showUserData(){
+
+       Intent intent = getActivity().getIntent();
+
+       String nameUser = intent.getStringExtra("name");
+       String ageUser = intent.getStringExtra("age");
+       String occupationUser = intent.getStringExtra("occupation");
+       String heightUser = intent.getStringExtra("height");
+       String weightUser = intent.getStringExtra("weight");
+
+       TextView name = root.findViewById(R.id.name_TV);
+       TextView age = root.findViewById(R.id.age_TV);
+       TextView occupation = root.findViewById(R.id.role_TV);
+       TextView height = root.findViewById(R.id.height_TV);
+       TextView weight = root.findViewById(R.id.weight_TV);
+
+       name.setText(nameUser);
+       age.setText(ageUser);
+       occupation.setText(occupationUser);
+       height.setText(heightUser);
+       weight.setText(weightUser);
+
+        Log.d("TAG", "onCreate: " + nameUser + ageUser);
+    }
+
+    public void passUserData(){
+        TextView name = root.findViewById(R.id.name_TV);
+
+        String nameUser = name.getText().toString().trim();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+        Query checkUserDatabase = reference.orderByChild("username").equalTo(nameUser);
+
+        checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+
+                    String nameFromDB = snapshot.child(nameUser).child("name").getValue(String.class);
+                    String ageFromDB = snapshot.child(nameUser).child("age").getValue(String.class);
+                    String occupationFromDB = snapshot.child(nameUser).child("occupation").getValue(String.class);
+                    String heightFromDB = snapshot.child(nameUser).child("height").getValue(String.class);
+                    String weightFromDB = snapshot.child(nameUser).child("weight").getValue(String.class);
+
+                    Intent intent= new Intent(getActivity(),EditProfileActivity.class);
+
+                    intent.putExtra("name", nameFromDB);
+                    intent.putExtra("age", ageFromDB);
+                    intent.putExtra("occupation", occupationFromDB);
+                    intent.putExtra("height", heightFromDB);
+                    intent.putExtra("weight", weightFromDB);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

@@ -69,8 +69,7 @@ public class MeditationFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(!sound.isPlaying()) {
-                    sound.setLooping(true);
-                    sound.start();
+                    startMusic();
                 } else {
                     sound.pause();
                 }
@@ -91,6 +90,7 @@ public class MeditationFragment extends Fragment {
                     currentSong = (songs.length - 1) % songs.length;
                 }
                 sound = MediaPlayer.create(getActivity(),songs[currentSong]);
+                startMusic();
             }
         });
 
@@ -104,6 +104,7 @@ public class MeditationFragment extends Fragment {
                 // increase the index to the next music
                 currentSong = (currentSong + 1) % songs.length;
                 sound = MediaPlayer.create(getActivity(),songs[currentSong]);
+                startMusic();
             }
         });
 
@@ -164,6 +165,9 @@ public class MeditationFragment extends Fragment {
     }
 
     // music play function
-
+    public void startMusic(){
+        sound.setLooping(true);
+        sound.start();
+    }
 
 }

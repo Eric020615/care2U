@@ -13,8 +13,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.DecimalFormat;
-
 public class CalculateBMIActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText height_et;

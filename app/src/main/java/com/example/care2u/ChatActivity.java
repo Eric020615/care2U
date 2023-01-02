@@ -4,7 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.care2u.adapter.ChatAdapter;
 import com.example.care2u.databinding.ActivityChatBinding;
@@ -32,6 +35,14 @@ public class ChatActivity extends AppCompatActivity {
         databaseReference= FirebaseDatabase.getInstance().getReference("Users");
         chatAdapter=new ChatAdapter(this);
         binding.messageRecycleView.setLayoutManager(new LinearLayoutManager(this));
+        ImageView chat_back = binding.chatBack;
+        chat_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override

@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DepressionTestActivity">
+
+    <ImageView
+        android:id="@+id/close_iv"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/close_icon" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:text="Depression Test"
+                android:textColor="#026B9F"
+                android:textSize="38sp" />
+
+            <LinearLayout
+                android:id="@+id/ly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv"
+                android:layout_marginTop="15dp"
+
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/mark1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:background="@drawable/mark2"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:background="@drawable/mark3"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:background="@drawable/mark4"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:background="@drawable/mark5"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ly2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ly"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="Strongly Disagree"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="#FC0000"/>
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="Disagree"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="#F87423"/>
+                    />
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="Neutral"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="#D7CE06"/>
+                   />
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="Agree"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="#7BDC06"/>
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="Strongly Agree"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="#47CA0E"/>
+
+
+            </LinearLayout>
+<!--            <ImageView-->
+<!--                android:id="@+id/iv1"-->
+<!--                android:layout_below="@+id/tv"-->
+<!--                android:layout_width="55dp"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:background="@drawable/mark1"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:layout_marginTop="30dp"/>-->
+<!--            <TextView-->
+<!--                android:id="@+id/tv1"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/iv1"-->
+<!--                android:text="Strongly Disagree"-->
+<!--                android:layout_alignEnd="@id/iv1"-->
+<!--                android:layout_marginLeft="8dp"-->
+<!--                android:gravity="center"/>-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/iv2"-->
+<!--                android:layout_alignTop="@+id/iv1"-->
+<!--                android:layout_toRightOf="@id/iv1"-->
+<!--                android:layout_width="55dp"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:background="@drawable/mark2"-->
+<!--                android:layout_marginLeft="15dp"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv2"-->
+<!--                android:layout_alignTop="@+id/tv1"-->
+<!--                android:layout_toRightOf="@+id/tv1"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/iv1"-->
+<!--                android:text="Disagree"-->
+<!--                android:gravity="center"-->
+<!--                android:layout_marginLeft="15dp"-->
+<!--                android:layout_alignEnd="@id/iv2"-->
+<!--                />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/iv3"-->
+<!--                android:layout_alignTop="@+id/iv2"-->
+<!--                android:layout_toRightOf="@id/iv2"-->
+<!--                android:layout_width="55dp"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:background="@drawable/mark3"-->
+<!--                android:layout_marginLeft="15dp"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv3"-->
+<!--                android:layout_alignTop="@+id/tv2"-->
+<!--                android:layout_toRightOf="@+id/tv2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/iv1"-->
+<!--                android:text="Nuetral"-->
+<!--                android:gravity="center"-->
+<!--                android:layout_marginLeft="17dp"-->
+<!--                android:layout_alignEnd="@id/iv3"/>-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/iv4"-->
+<!--                android:layout_alignTop="@+id/iv3"-->
+<!--                android:layout_toRightOf="@id/iv3"-->
+<!--                android:layout_width="55dp"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:background="@drawable/mark4"-->
+<!--                android:layout_marginLeft="15dp"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv4"-->
+<!--                android:layout_alignTop="@+id/tv3"-->
+<!--                android:layout_toRightOf="@+id/tv3"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/iv1"-->
+<!--                android:text="Disagree"-->
+<!--                android:layout_marginLeft="18dp"-->
+<!--                android:gravity="center"-->
+<!--                android:layout_alignEnd="@id/iv4"/>-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/iv5"-->
+<!--                android:layout_alignTop="@+id/iv4"-->
+<!--                android:layout_toRightOf="@id/iv4"-->
+<!--                android:layout_width="55dp"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:background="@drawable/mark5"-->
+<!--                android:layout_marginLeft="15dp"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv5"-->
+<!--                android:layout_alignTop="@+id/tv4"-->
+<!--                android:layout_toRightOf="@+id/tv4"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/iv1"-->
+<!--                android:text="Strongly Agree"-->
+<!--                android:gravity="center"-->
+<!--                android:layout_marginLeft="18dp"-->
+<!--                android:layout_alignEnd="@id/iv5"/>-->
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@+id/ly2"
+                android:id="@+id/dep_test_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                >
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <Button
+                android:id="@+id/submit_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_below="@+id/dep_test_rv"
+                android:background="@drawable/bmi_background"
+                android:layout_centerHorizontal="true"/>
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</LinearLayout>

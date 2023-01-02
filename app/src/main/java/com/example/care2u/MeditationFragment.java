@@ -1,5 +1,6 @@
 package com.example.care2u;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -24,10 +25,18 @@ public class MeditationFragment extends Fragment {
     private boolean mTimerRunning;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
 
+    // music play function
+    private MediaPlayer sound;
+    private Button playpause,previous,next;
+
+    private int[] songs = {R.raw.music1, R.raw.music2};
+    private int currentSong = 0;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_meditation, container, false);
 
+        // count down function
         mTextViewCountDown = rootView.findViewById(R.id.text_view_countdown);
         mButtonStartPause = rootView.findViewById(R.id.button_start_pause);
         mButtonReset = rootView.findViewById(R.id.button_reset);
@@ -50,11 +59,62 @@ public class MeditationFragment extends Fragment {
             }
         });
 
+        // music play function
+        playpause = rootView.findViewById(R.id.Btn_play_music);
+        previous = rootView.findViewById(R.id.Btn_previous);
+        next = rootView.findViewById(R.id.Btn_next);
+
+        sound = MediaPlayer.create(getActivity(),songs[currentSong]);
+        playpause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!sound.isPlaying()) {
+                    sound.setLooping(true);
+                    sound.start();
+                } else {
+                    sound.pause();
+                }
+            }
+        });
+
+        previous.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // stop music and release it
+                sound.stop();
+                sound.release();
+
+                // decrease the index to the previous music
+                if(currentSong != 0){
+                    currentSong = (currentSong - 1) % songs.length;
+                } else {
+                    currentSong = (songs.length - 1) % songs.length;
+                }
+                sound = MediaPlayer.create(getActivity(),songs[currentSong]);
+            }
+        });
+
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // stop music and release it
+                sound.stop();
+                sound.release();
+
+                // increase the index to the next music
+                currentSong = (currentSong + 1) % songs.length;
+                sound = MediaPlayer.create(getActivity(),songs[currentSong]);
+            }
+        });
+
+
+        // output
         updateCountDownText();
 
         return rootView;
     }
 
+    // count down function
     private void startTimer() {
         mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
             @Override
@@ -102,4 +162,8 @@ public class MeditationFragment extends Fragment {
 
         mTextViewCountDown.setText(updateCountDownText);
     }
+
+    // music play function
+
+
 }

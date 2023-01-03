@@ -83,18 +83,18 @@ public class EditProfileActivity extends AppCompatActivity {
                         genderSelection = (RadioButton) findViewById(gender.getCheckedRadioButtonId());
                         bloodtypeSelection = (RadioButton) findViewById(bloodtype.getCheckedRadioButtonId());
 
-                        double height = Double.parseDouble(String.valueOf(heightUser));
-                        double weight = Double.parseDouble(String.valueOf(weightUser));
-                        double bmi = weight / ((height/100) * (height/100));
-
                         reference.child(uid).child("username").setValue(editName.getText().toString());
                         reference.child(uid).child("age").setValue(editAge.getText().toString());
                         reference.child(uid).child("occupation").setValue(editOccupation.getText().toString());
                         reference.child(uid).child("height").setValue(editHeight.getText().toString());
                         reference.child(uid).child("weight").setValue(editWeight.getText().toString());
-                        reference.child(uid).child("BMI").setValue(String.format("%.1f",bmi));
                         reference.child(uid).child("Gender").setValue(genderSelection.getText());
                         reference.child(uid).child("Blood Type").setValue(bloodtypeSelection.getText());
+
+                        double height = Double.parseDouble(String.valueOf(editHeight.getText().toString()));
+                        double weight = Double.parseDouble(String.valueOf(editWeight.getText().toString()));
+                        double bmi = weight / ((height/100) * (height/100));
+                        reference.child(uid).child("BMI").setValue(String.format("%.1f",bmi));
 
                         Toast.makeText(EditProfileActivity.this, "Saved", Toast.LENGTH_SHORT).show();
                     }

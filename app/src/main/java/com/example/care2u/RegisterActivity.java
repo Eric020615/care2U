@@ -22,8 +22,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://care2u-99f78-default-rtdb.firebaseio.com/");
-
     FirebaseAuth mAuth;
 
     @Override
@@ -75,6 +73,13 @@ public class RegisterActivity extends AppCompatActivity {
 
                                                 }
                                             });
+                                            FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("occupation").setValue("-");
+                                            FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("Blood Type").setValue("-");
+                                            FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("Depression").setValue("-");
+                                            FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("BMI").setValue("-");
+                                            FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("Gender").setValue("-");
+                                            FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("height").setValue("-");
+                                            FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("weight").setValue("-");
                                             Toast.makeText(RegisterActivity.this, "Account had been registered successfully.", Toast.LENGTH_SHORT).show();
                                             finish();
                                         }

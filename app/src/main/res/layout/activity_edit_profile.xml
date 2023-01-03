@@ -85,7 +85,7 @@
                 android:layout_below="@id/Name"
                 android:layout_alignStart="@id/Name"
                 android:layout_marginRight="30dp"
-                android:text="Eng Jun Cheng"
+                android:hint="alibaba"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -109,7 +109,7 @@
                 android:layout_alignStart="@id/Age"
                 android:layout_marginRight="30dp"
                 android:inputType="number"
-                android:text="20"
+                android:hint="20"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -136,6 +136,7 @@
                 android:orientation="horizontal">
 
                 <RadioButton
+                    android:id="@+id/male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -144,6 +145,7 @@
                     android:textSize="18sp" />
 
                 <RadioButton
+                    android:id="@+id/female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -172,7 +174,7 @@
                 android:layout_below="@id/Occupation"
                 android:layout_alignStart="@id/Occupation"
                 android:layout_marginRight="30dp"
-                android:text="UM Student"
+                android:hint="UMStudent"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -184,7 +186,7 @@
                 android:layout_alignStart="@+id/change_profile_picture_button"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:text="Height"
+                android:text="Height (cm)"
                 android:textColor="#01639A"
                 android:textSize="15sp" />
 
@@ -196,7 +198,7 @@
                 android:layout_alignStart="@id/Height"
                 android:layout_marginRight="30dp"
                 android:inputType="number"
-                android:text="175"
+                android:hint="175"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -208,7 +210,7 @@
                 android:layout_alignStart="@+id/change_profile_picture_button"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:text="Weight"
+                android:text="Weight (kg)"
                 android:textColor="#01639A"
                 android:textSize="15sp" />
 
@@ -220,7 +222,7 @@
                 android:layout_alignStart="@id/Weight"
                 android:layout_marginRight="30dp"
                 android:inputType="number"
-                android:text="65"
+                android:hint="65"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -249,6 +251,7 @@
                 android:orientation="horizontal">
 
                 <RadioButton
+                    android:id="@+id/A"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -256,6 +259,7 @@
                     android:textSize="18sp" />
 
                 <RadioButton
+                    android:id="@+id/B"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -263,6 +267,7 @@
                     android:textSize="18sp" />
 
                 <RadioButton
+                    android:id="@+id/AB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -270,6 +275,7 @@
                     android:textSize="18sp" />
 
                 <RadioButton
+                    android:id="@+id/O"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -278,34 +284,12 @@
 
             </RadioGroup>
 
-            <TextView
-                android:id="@+id/Email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/bloodtype_RG"
-                android:layout_alignStart="@+id/change_profile_picture_button"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:text="Email"
-                android:textColor="#01639A"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/email_ET"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/Email"
-                android:layout_alignStart="@id/Email"
-                android:layout_marginRight="30dp"
-                android:hint="care2U@gmail.com"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/button_Save"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/email_ET"
+                android:layout_below="@id/bloodtype_RG"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="15dp"

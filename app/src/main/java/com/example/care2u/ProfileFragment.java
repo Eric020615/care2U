@@ -1,7 +1,6 @@
 package com.example.care2u;
 
 
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -85,18 +84,26 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         Button edit_profile_button = root.findViewById(R.id.edit_profile_button);
         Button log_out_button = root.findViewById(R.id.logout_button);
         TextView name = root.findViewById(R.id.name_TV);
+        TextView age = root.findViewById(R.id.age_TV);
+        TextView occupation = root.findViewById(R.id.role_TV);
+        TextView height = root.findViewById(R.id.height_TV);
+        TextView weight = root.findViewById(R.id.weight_TV);
+        TextView bloodtype = root.findViewById(R.id.bloodtype_TV);
+        TextView gender = root.findViewById(R.id.gender_TV);
 
-        showUserData();
-        passUserData();
-
-        FirebaseAuth Auth=FirebaseAuth.getInstance();
+        FirebaseAuth Auth = FirebaseAuth.getInstance();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        String uid=Auth.getCurrentUser().getUid();
+        String uid = Auth.getCurrentUser().getUid();
         databaseReference.child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user=snapshot.getValue(User.class);
-                name.setText(user.getUsername());
+                name.setText(snapshot.child("username").getValue(String.class));
+                age.setText(snapshot.child("age").getValue(String.class) + " years old");
+                occupation.setText(snapshot.child("occupation").getValue(String.class));
+                height.setText(snapshot.child("height").getValue(String.class) + " cm");
+                weight.setText(snapshot.child("weight").getValue(String.class) + " kg");
+                bloodtype.setText(snapshot.child("Blood Type").getValue(String.class));
+                gender.setText(snapshot.child("Gender").getValue(String.class));
             }
 
             @Override
@@ -113,13 +120,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         final Intent[] intent = new Intent[1];
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.edit_profile_button:
-                intent[0] = new Intent(getActivity(),EditProfileActivity.class);
+                intent[0] = new Intent(getActivity(), EditProfileActivity.class);
                 startActivity(intent[0]);
                 break;
             case R.id.faqs_button:
-                intent[0] = new Intent(getActivity(),FAQActivity.class);
+                intent[0] = new Intent(getActivity(), FAQActivity.class);
                 startActivity(intent[0]);
                 break;
             case R.id.logout_button:
@@ -131,7 +138,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         FirebaseAuth mAuth = FirebaseAuth.getInstance();
                         mAuth.signOut();
-                        intent[0] = new Intent(getActivity(),LoginActivity.class);
+                        intent[0] = new Intent(getActivity(), LoginActivity.class);
                         startActivity(intent[0]);
                     }
                 });
@@ -149,64 +156,4 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    public void showUserData(){
-
-       Intent intent = getActivity().getIntent();
-
-       String nameUser = intent.getStringExtra("name");
-       String ageUser = intent.getStringExtra("age");
-       String occupationUser = intent.getStringExtra("occupation");
-       String heightUser = intent.getStringExtra("height");
-       String weightUser = intent.getStringExtra("weight");
-
-       TextView name = root.findViewById(R.id.name_TV);
-       TextView age = root.findViewById(R.id.age_TV);
-       TextView occupation = root.findViewById(R.id.role_TV);
-       TextView height = root.findViewById(R.id.height_TV);
-       TextView weight = root.findViewById(R.id.weight_TV);
-
-       name.setText(nameUser);
-       age.setText(ageUser);
-       occupation.setText(occupationUser);
-       height.setText(heightUser);
-       weight.setText(weightUser);
-
-        Log.d("TAG", "onCreate: " + nameUser + ageUser);
-    }
-
-    public void passUserData(){
-        TextView name = root.findViewById(R.id.name_TV);
-
-        String nameUser = name.getText().toString().trim();
-
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-        Query checkUserDatabase = reference.orderByChild("username").equalTo(nameUser);
-
-        checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-
-                    String nameFromDB = snapshot.child(nameUser).child("name").getValue(String.class);
-                    String ageFromDB = snapshot.child(nameUser).child("age").getValue(String.class);
-                    String occupationFromDB = snapshot.child(nameUser).child("occupation").getValue(String.class);
-                    String heightFromDB = snapshot.child(nameUser).child("height").getValue(String.class);
-                    String weightFromDB = snapshot.child(nameUser).child("weight").getValue(String.class);
-
-                    Intent intent= new Intent(getActivity(),EditProfileActivity.class);
-
-                    intent.putExtra("name", nameFromDB);
-                    intent.putExtra("age", ageFromDB);
-                    intent.putExtra("occupation", occupationFromDB);
-                    intent.putExtra("height", heightFromDB);
-                    intent.putExtra("weight", weightFromDB);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
 }

@@ -67,8 +67,6 @@ public class CalculateBMIActivity extends AppCompatActivity implements View.OnCl
         height_et.setText("");
         weight_et.setText("");
 
-        String uid=mAuth.getCurrentUser().getUid();
-        databaseReference.child(uid).child("BMI").setValue(String.format("%.1f",bmi));
     }
 }
 

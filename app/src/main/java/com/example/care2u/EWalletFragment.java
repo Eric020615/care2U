@@ -93,6 +93,7 @@ public class EWalletFragment extends Fragment {
 
             }
         });
+
         TopUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.care2u.entity.NotificationModel;
 import com.example.care2u.entity.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -67,12 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
-                                            FirebaseDatabase.getInstance().getReference("Assets").child(FirebaseAuth.getInstance().getUid()).child("Money").setValue("0").addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-
-                                                }
-                                            });
+                                            FirebaseDatabase.getInstance().getReference("Assets").child(FirebaseAuth.getInstance().getUid()).child("Money").setValue("0");
                                             FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("occupation").setValue("-");
                                             FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("Blood Type").setValue("-");
                                             FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("Depression").setValue("-");
@@ -80,6 +76,8 @@ public class RegisterActivity extends AppCompatActivity {
                                             FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("Gender").setValue("-");
                                             FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("height").setValue("-");
                                             FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("weight").setValue("-");
+                                            NotificationModel notificationModel = new NotificationModel("Welcome to Care2U","");
+                                            FirebaseDatabase.getInstance().getReference("Notification").child(FirebaseAuth.getInstance().getUid()).child("1").setValue(notificationModel);
                                             Toast.makeText(RegisterActivity.this, "Account had been registered successfully.", Toast.LENGTH_SHORT).show();
                                             finish();
                                         }

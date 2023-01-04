@@ -114,8 +114,8 @@ public class TopUpFragment extends DialogFragment {
         TopUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if ((Double.parseDouble(Amount.getText().toString()) <= 0)) {
-                    Toast.makeText(getActivity(), "Please type in valid amount", Toast.LENGTH_LONG).show();
+                if ((Amount.getText().toString().isEmpty())) {
+                    Toast.makeText(getActivity(), "Please type valid amount", Toast.LENGTH_LONG).show();
                 } else {
                     Double TopUpAmount = Double.parseDouble(balance) + Double.parseDouble(Amount.getText().toString());
                     String updateAmount = String.format("%.2f", TopUpAmount);
@@ -126,14 +126,10 @@ public class TopUpFragment extends DialogFragment {
                             transactionReference.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                                     key = "1";
-
-                                    if (snapshot.hasChild("Transaction_History")) {
-                                        if (snapshot.child("Transaction_History").hasChild(uid)) {
-                                            key = String.valueOf(snapshot.child("Transaction_History").child(uid).getChildrenCount()) + 1;
-                                            transactionReference.child("Transaction_History").child(uid).child(key).setValue(transactionModel);
-                                        }
+                                    if (snapshot.child("Transaction_History").hasChild(uid)) {
+                                        key = String.valueOf(snapshot.child("Transaction_History").child(uid).getChildrenCount()) + 1;
+                                        transactionReference.child("Transaction_History").child(uid).child(key).setValue(transactionModel);
                                     } else {
                                         transactionReference.child("Transaction_History").child(uid).child(key).setValue(transactionModel);
                                     }
@@ -141,10 +137,8 @@ public class TopUpFragment extends DialogFragment {
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
-
                                 }
                             });
-                            System.out.println(key);
                             Toast.makeText(getActivity(), "Reload Sucessfully", Toast.LENGTH_LONG).show();
                             dismiss();
                         }

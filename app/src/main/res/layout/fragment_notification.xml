@@ -6,42 +6,11 @@
     android:background="#01639A"
     tools:context=".NotificationFragment">
 
-    <!-- Music Blank Part -->
-    <ImageView
-        android:id="@+id/searchblank_reactangle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/notification_rectangle_white_with_radius_blank"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
-        />
-
-    <ImageView
-        android:id="@+id/magnifierIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/notification_magnifier_icon"
-        />
-
-    <EditText
-        android:id="@+id/ET_searchField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:ems="12"
-        android:hint="SEARCH KEY WORD"
-        android:inputType="textPersonName"
-        android:textStyle="bold"
-        />
-
-    <ListView
-        android:id="@+id/LV_friends"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/notificationList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:layout_marginTop="60dp"
+        android:layout_height="match_parent"
+        android:background="@color/blue"
         />
 
 </FrameLayout>

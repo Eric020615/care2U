@@ -2,9 +2,12 @@ package com.example.care2u.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,7 +16,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.care2u.ConversationActivity;
 import com.example.care2u.R;
 import com.example.care2u.entity.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +65,26 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
         User user = userList.get(position);
         holder.name.setText(user.getUsername());
         holder.email.setText(user.getEmail());
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference("images/" + user.getUserid());
+        try {
+            File localfile = File.createTempFile("Temp File", ".jpg");
+            storageReference.getFile(localfile)
+                    .addOnCompleteListener(new OnCompleteListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<FileDownloadTask.TaskSnapshot> task) {
+
+                            Bitmap bitmap = BitmapFactory.decodeFile(localfile.getAbsolutePath());
+                            holder.profile_pic.setImageBitmap(bitmap);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,10 +104,12 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         private TextView name,email;
+        private ImageView profile_pic;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name=itemView.findViewById(R.id.chat_name);
             email=itemView.findViewById(R.id.email);
+            profile_pic=itemView.findViewById(R.id.chat_profile);
         }
     }
 }

@@ -1,22 +1,31 @@
 package com.example.care2u;
 
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.example.care2u.entity.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,6 +33,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Field;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -90,10 +106,40 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         TextView weight = root.findViewById(R.id.weight_TV);
         TextView bloodtype = root.findViewById(R.id.bloodtype_TV);
         TextView gender = root.findViewById(R.id.gender_TV);
+        ImageView profile_pic = root.findViewById(R.id.profile_picture_IV);
+        ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Fetching Image");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
 
         FirebaseAuth Auth = FirebaseAuth.getInstance();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         String uid = Auth.getCurrentUser().getUid();
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference("images/" + uid);
+        try {
+            File localfile = File.createTempFile("Temp File", ".jpg");
+            storageReference.getFile(localfile)
+                    .addOnCompleteListener(new OnCompleteListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<FileDownloadTask.TaskSnapshot> task) {
+                            if (progressDialog.isShowing())
+                                progressDialog.dismiss();
+
+                            Bitmap bitmap = BitmapFactory.decodeFile(localfile.getAbsolutePath());
+                            profile_pic.setImageBitmap(bitmap);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            if (progressDialog.isShowing())
+                                progressDialog.dismiss();
+
+                        }
+                    });
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+
         databaseReference.child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

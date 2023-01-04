@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_picture_IV"
                 android:layout_width="112dp"
                 android:layout_height="112dp"
@@ -60,7 +60,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/health_record_button_background"
+                android:background="@drawable/editprofilepicbutton"
                 android:text="Change Profile Picture"
                 android:textAllCaps="false"
                 android:textColor="@color/white"

@@ -19,7 +19,7 @@
             android:background="@drawable/profile_page_backgorund"
             >
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_picture_IV"
                 android:layout_width="112dp"
                 android:layout_height="112dp"

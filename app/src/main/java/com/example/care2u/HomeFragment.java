@@ -74,6 +74,18 @@ public class HomeFragment extends Fragment{
         ImageButton meditation_btn = root.findViewById(R.id.meditation_button);
         ImageButton e_wallet_btn = root.findViewById(R.id.my_wallet_button);
         ImageButton marketplace_btn = root.findViewById(R.id.marketplace_button);
+        ImageButton timetable_btn = root.findViewById(R.id.timetable_button);
+        timetable_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new TimetableFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
         health_record_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

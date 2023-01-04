@@ -10,15 +10,21 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Toast;
+
 import com.example.care2u.databinding.ActivityMainBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
     ActivityMainBinding binding;
     FirebaseAuth mAuth;
     FirebaseUser user;
+    float dX;
+    float dY;
+    int lastAction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +34,16 @@ public class MainActivity extends AppCompatActivity {
         user = mAuth.getCurrentUser();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        binding.fab.setOnTouchListener(this);
+
+        binding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"Clicked",Toast.LENGTH_SHORT).show();
+            }
+        });
+
         setSupportActionBar(findViewById(R.id.tool_app));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#F9F9F9")));
         getSupportActionBar().setTitle(Html.fromHtml("<font color='000000'>Welcome Back!</font>"));
@@ -86,4 +102,31 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_top, menu);
         return true;
     }
+
+    @Override
+    public boolean onTouch(View view, MotionEvent event) {
+        switch (event.getActionMasked()) {
+            case MotionEvent.ACTION_DOWN:
+                dX = view.getX() - event.getRawX();
+                dY = view.getY() - event.getRawY();
+                lastAction = MotionEvent.ACTION_DOWN;
+                break;
+
+            case MotionEvent.ACTION_MOVE:
+                view.setY(event.getRawY() + dY);
+                view.setX(event.getRawX() + dX);
+                lastAction = MotionEvent.ACTION_MOVE;
+                break;
+
+            case MotionEvent.ACTION_UP:
+                if (lastAction == MotionEvent.ACTION_DOWN)
+                    Toast.makeText(MainActivity.this, "Clicked!", Toast.LENGTH_SHORT).show();
+                break;
+
+            default:
+                return false;
+        }
+        return true;
+    }
 }
+

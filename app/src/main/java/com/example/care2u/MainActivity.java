@@ -1,22 +1,34 @@
 package com.example.care2u;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.example.care2u.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
     ActivityMainBinding binding;
@@ -25,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     float dX;
     float dY;
     int lastAction;
+    int happy;
+    DatabaseReference happinessvalue = FirebaseDatabase.getInstance().getReference("Happiness Value").child(FirebaseAuth.getInstance().getUid());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,20 +48,32 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         user = mAuth.getCurrentUser();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         binding.fab.setOnTouchListener(this);
-
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"Clicked",Toast.LENGTH_SHORT).show();
-            }
-        });
-
         setSupportActionBar(findViewById(R.id.tool_app));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#F9F9F9")));
         getSupportActionBar().setTitle(Html.fromHtml("<font color='000000'>Welcome Back!</font>"));
         replaceFragment(new HomeFragment());
+
+        happinessvalue.child("Happy").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.getValue(Integer.class)==100){
+                    View popup = getLayoutInflater().inflate(R.layout.quote,null);
+                    PopupWindow popupWindow = new PopupWindow(getApplicationContext());
+                    popupWindow.setOutsideTouchable(false);
+                    popupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                    popupWindow.setContentView(popup);
+                    popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+                    popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+                    //popupWindow.showAtLocation(, Gravity.CENTER,0,0);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         binding.toolApp.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
@@ -72,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                     replaceFragment(new ScheduleFragment());
                     break;
                 case R.id.chat_button:
-                    Intent intent=new Intent(getApplicationContext(),ChatActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.notification_button:
@@ -120,7 +146,40 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
             case MotionEvent.ACTION_UP:
                 if (lastAction == MotionEvent.ACTION_DOWN)
-                    Toast.makeText(MainActivity.this, "Clicked!", Toast.LENGTH_SHORT).show();
+                    happinessvalue.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            happy = snapshot.child("Happy").getValue(Integer.class);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                    if (happy==90){
+                        View popup = getLayoutInflater().inflate(R.layout.quote,null);
+                        PopupWindow popupWindow = new PopupWindow(getApplicationContext());
+                        popupWindow.setOutsideTouchable(false);
+                        popupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                        popupWindow.setContentView(popup);
+                        popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+                        popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+                        popupWindow.showAtLocation(view, Gravity.CENTER,0,0);
+                        happinessvalue.child("Happy").setValue(0);
+                        ImageView closeBtn = popup.findViewById(R.id.quote_close);
+                        closeBtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                popupWindow.dismiss();
+                            }
+                        });
+                    }
+                    else{
+                        happy += 10;
+                        happinessvalue.child("Happy").setValue(happy);
+                        Toast.makeText(getApplicationContext(), "+10 Happiness Value", Toast.LENGTH_SHORT).show();
+                    }
                 break;
 
             default:

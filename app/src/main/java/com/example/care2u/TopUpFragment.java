@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.care2u.adapter.TransactionAdapter;
+import com.example.care2u.entity.NotificationModel;
 import com.example.care2u.entity.TransactionModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -27,6 +28,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.UUID;
+
+import okhttp3.internal.cache.DiskLruCache;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,6 +51,7 @@ public class TopUpFragment extends DialogFragment {
     private Double TopUpAmount = 0.00;
     private String order;
     private String key;
+    private String notification_ID;
 
     public TopUpFragment() {
         // Required empty public constructor
@@ -95,6 +99,7 @@ public class TopUpFragment extends DialogFragment {
         root = inflater.inflate(R.layout.fragment_top_up, container, false);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Assets");
         DatabaseReference transactionReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://care2u-99f78-default-rtdb.firebaseio.com/");
+        DatabaseReference notificationReference = FirebaseDatabase.getInstance().getReference("Notification");
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String uid = mAuth.getCurrentUser().getUid();
         Button TopUpButton = root.findViewById(R.id.TopUpButton);
@@ -114,7 +119,7 @@ public class TopUpFragment extends DialogFragment {
         TopUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if ((Amount.getText().toString().isEmpty())) {
+                if ((Amount.getText().toString().isEmpty())||Double.parseDouble(Amount.getText().toString())<10) {
                     Toast.makeText(getActivity(), "Please type valid amount", Toast.LENGTH_LONG).show();
                 } else {
                     Double TopUpAmount = Double.parseDouble(balance) + Double.parseDouble(Amount.getText().toString());
@@ -139,6 +144,22 @@ public class TopUpFragment extends DialogFragment {
                                 public void onCancelled(@NonNull DatabaseError error) {
                                 }
                             });
+                            notificationReference.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    NotificationModel notificationModel = new NotificationModel("You had reloaded RM"+Amount.getText().toString(),"");
+                                    notification_ID = String.valueOf(snapshot.getChildrenCount()+1);
+                                    FirebaseDatabase.getInstance().getReference("Notification").child(FirebaseAuth.getInstance().getUid()).child(notification_ID).setValue(notificationModel);
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+                            System.out.println(notification_ID);
+
                             Toast.makeText(getActivity(), "Reload Sucessfully", Toast.LENGTH_LONG).show();
                             dismiss();
                         }

@@ -84,8 +84,8 @@ public class PrescriptionOrderAdapter extends RecyclerView.Adapter<PrescriptionO
                                             Toast.makeText(view.getContext(), "Insufficient balance",Toast.LENGTH_SHORT).show();
                                         }
                                         else{
-                                            double temp = Double.parseDouble(money)-85;
-                                            databaseReference.child("Assets").child(FirebaseAuth.getInstance().getUid()).setValue(String.format("%.2f", temp));
+                                            double temp = Double.parseDouble(money)-85.0;
+                                            databaseReference.child("Assets").child(FirebaseAuth.getInstance().getUid()).child("Money").setValue(String.format("%.2f", temp));
                                             databaseReference.child("Notification").child(FirebaseAuth.getInstance().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                                                 @Override
                                                 public void onDataChange(@NonNull DataSnapshot snapshot) {

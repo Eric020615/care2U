@@ -13,6 +13,9 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#00B0CB"
         android:text="Login"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:background="@drawable/editprofilepicbutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -21,12 +24,14 @@
         app:layout_constraintVertical_bias="0.701" />
 
     <Button
+        android:textAllCaps="false"
         android:id="@+id/start_signup_button"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Register"
         android:textColor="@color/black"
         android:backgroundTint="#FFFFFF"
+        android:background="@drawable/editprofilepicbutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

@@ -182,6 +182,7 @@
         android:text="Sign Up"
         android:textAllCaps="false"
         android:textColor="@color/black"
+        android:background="@drawable/editprofilepicbutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"

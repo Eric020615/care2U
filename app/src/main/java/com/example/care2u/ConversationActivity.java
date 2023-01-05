@@ -21,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.UUID;
 
 public class ConversationActivity extends AppCompatActivity {
+
     ActivityConversationBinding binding;
     String receiver_id;
     DatabaseReference databaseReferenceSender;

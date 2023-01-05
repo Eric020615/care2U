@@ -3,7 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="8dp"
-    android:orientation="vertical">
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="8dp"
+    android:orientation="vertical"
+    android:background="@drawable/bmi_background_et"
+    android:padding="20dp">
 
     <TextView
         android:id="@+id/order_id_tv"
@@ -12,7 +16,8 @@
         android:fontFamily="sans-serif-black"
         android:text="Order ID : 7MX27101619646"
         android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,7 +29,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lamotrigine (Lamictal) 25 mg"
+        android:text="Lamotrigine (Lamictal) 30 tablets"
         android:textColor="#808080"
         android:textSize="18sp" />
 
@@ -35,6 +40,34 @@
         android:textColor="#808080"
         android:textSize="18sp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/medicine_png1"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/medicine_png2"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/medicine_png3"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/start_order_date_tv"
         android:layout_width="wrap_content"
@@ -42,12 +75,15 @@
         android:fontFamily="sans-serif-black"
         android:text="Order Start Date: 4-1-2023"
         android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:id="@+id/address_ly"
+        >
 
         <TextView
             android:layout_width="wrap_content"
@@ -56,7 +92,8 @@
             android:fontFamily="sans-serif-black"
             android:text="Address:"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            />
 
         <EditText
             android:id="@+id/address_et"
@@ -66,9 +103,23 @@
             android:layout_marginTop="20dp"
             android:text=""
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            />
+
+
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/address_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Address: No 16,Jalan  3/6, Taman Seri Tanjong,Selangor"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:visibility="gone"
+        />
 
     <TextView
         android:id="@+id/estimated_delivery_date_tv"
@@ -91,7 +142,7 @@
             android:id="@+id/amount_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Total: RM 45.00"
+            android:text="Total: RM 85.00"
             android:textSize="25sp"
             android:textColor="#FF0000"
             android:layout_marginRight="20dp"
@@ -110,17 +161,30 @@
             android:layout_marginRight="10dp"
            />
 
+        <ImageView
+            android:id="@+id/done_payment_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/amount_tv"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/icons8_done"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="-10dp"
+            android:visibility="gone"
+            />
+
         <TextView
             android:id="@+id/payment_status_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Unpaid"
-            android:layout_toLeftOf="@+id/pay_btn"
+            android:layout_below="@+id/amount_tv"
             android:textSize="25sp"
             android:layout_centerVertical="true"
-            android:layout_alignTop="@+id/pay_btn"
+           android:layout_alignStart="@+id/amount_tv"
             android:textColor="#FF0000"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="20dp"
+            />
 
 
 

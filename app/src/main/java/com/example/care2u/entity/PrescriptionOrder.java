@@ -11,7 +11,7 @@ public class PrescriptionOrder {
     private String estimated_delivery_date;
     private String address;
     private String orderID;
-
+    private boolean paid;
 
     public PrescriptionOrder() {
 
@@ -28,6 +28,8 @@ public class PrescriptionOrder {
         Date estimated_date = calendar.getTime();
         String estimated_delivery_date = formatter.format(estimated_date);
         this.estimated_delivery_date = estimated_delivery_date;
+
+        this.paid = false;
     }
 
     public String getStart_order_date() {
@@ -61,6 +63,14 @@ public class PrescriptionOrder {
     public void setOrderID(String orderID) {
         this.orderID = orderID;
     }
+    public boolean isPaid() {
+        return paid;
+    }
+
+    public void setPaid(boolean paid) {
+        this.paid = paid;
+    }
+
 
     public String generateOrderID(){
         Random random = new Random();

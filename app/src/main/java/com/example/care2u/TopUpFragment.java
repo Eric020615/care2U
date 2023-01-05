@@ -108,6 +108,9 @@ public class TopUpFragment extends DialogFragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 balance = snapshot.getValue(String.class);
+                if (balance==null){
+                    balance="0";
+                }
             }
 
             @Override
@@ -158,7 +161,6 @@ public class TopUpFragment extends DialogFragment {
 
                                 }
                             });
-                            System.out.println(notification_ID);
 
                             Toast.makeText(getActivity(), "Reload Sucessfully", Toast.LENGTH_LONG).show();
                             dismiss();

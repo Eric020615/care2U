@@ -18,7 +18,14 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.care2u.R;
+import com.example.care2u.entity.NotificationModel;
 import com.example.care2u.entity.PrescriptionOrder;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -26,6 +33,8 @@ public class PrescriptionOrderAdapter extends RecyclerView.Adapter<PrescriptionO
 
     private Context context;
     static ArrayList<PrescriptionOrder> prescriptionOrders = new ArrayList<>();
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://care2u-99f78-default-rtdb.firebaseio.com/");
 
 
     public PrescriptionOrderAdapter(Context context) {
@@ -67,18 +76,55 @@ public class PrescriptionOrderAdapter extends RecyclerView.Adapter<PrescriptionO
                             if (address.isEmpty()) {
                                 Toast.makeText(context, "Address cannot be empty.", Toast.LENGTH_LONG).show();
                             } else {
-                                holder.start_order_date_tv.setText("Order Start Date: " + order.getStart_order_date());
-                                holder.estimated_delivery_date_tv.setText("Estimated Delivery Date: " + order.getEstimated_delivery_date());
-                                holder.payment_status_tv.setText("Paid");
-                                holder.payment_status_tv.setTextColor(Color.BLUE);
-                                holder.pay_btn.setVisibility(View.INVISIBLE);
-                                holder.amount_tv.setTextColor(Color.BLUE);
-                                holder.address_tv.setText("Address: " + address);
-                                order.setAddress(address);
-                                holder.address_tv.setVisibility(View.VISIBLE);
-                                holder.address_ly.setVisibility(View.GONE);
-                                holder.done_icon.setVisibility(View.VISIBLE);
-                                order.setPaid(true);
+                                databaseReference.child("Assets").child(FirebaseAuth.getInstance().getUid()).child("Money").addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        String money = snapshot.getValue(String.class);
+                                        if (money==null||Double.parseDouble(money)<85){
+                                            Toast.makeText(view.getContext(), "Insufficient balance",Toast.LENGTH_SHORT).show();
+                                        }
+                                        else{
+                                            double temp = Double.parseDouble(money)-85;
+                                            databaseReference.child("Assets").child(FirebaseAuth.getInstance().getUid()).setValue(String.format("%.2f", temp));
+                                            databaseReference.child("Notification").child(FirebaseAuth.getInstance().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                    NotificationModel notificationModel = new NotificationModel("Deducted RM85 from your balance.","");
+                                                    String notification_ID = String.valueOf(snapshot.getChildrenCount()+1);
+                                                    FirebaseDatabase.getInstance().getReference("Notification").child(FirebaseAuth.getInstance().getUid()).child(notification_ID).setValue(notificationModel);
+
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                                }
+                                            });
+                                            holder.start_order_date_tv.setText("Order Start Date: " + order.getStart_order_date());
+                                            holder.estimated_delivery_date_tv.setText("Estimated Delivery Date: " + order.getEstimated_delivery_date());
+                                            holder.payment_status_tv.setText("Paid");
+                                            holder.payment_status_tv.setTextColor(Color.BLUE);
+                                            holder.pay_btn.setVisibility(View.INVISIBLE);
+                                            holder.amount_tv.setTextColor(Color.BLUE);
+                                            holder.address_tv.setText("Address: " + address);
+                                            order.setAddress(address);
+                                            holder.address_tv.setVisibility(View.VISIBLE);
+                                            holder.address_ly.setVisibility(View.GONE);
+                                            holder.done_icon.setVisibility(View.VISIBLE);
+                                            order.setPaid(true);
+                                            Toast.makeText(view.getContext(), "Payment successful",Toast.LENGTH_SHORT).show();
+
+
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+
+
                             }
                         }
                     });

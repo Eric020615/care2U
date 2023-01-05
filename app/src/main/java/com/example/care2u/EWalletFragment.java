@@ -85,7 +85,12 @@ public class EWalletFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String money = snapshot.getValue(String.class);
-                balance.setText("RM " + money);
+                if (money==null){
+                    balance.setText("RM 0");
+                }
+                else {
+                    balance.setText("RM " + money);
+                }
             }
 
             @Override

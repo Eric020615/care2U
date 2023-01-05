@@ -20,9 +20,9 @@
                 android:id="@+id/marketplace_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/home_marketplace_button"
                 android:layout_gravity="center_horizontal"
-                android:backgroundTint="#F9F9F9"/>
+                android:backgroundTint="#F9F9F9"
+                android:src="@drawable/home_marketplace_button" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -35,16 +35,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/home_meditation_icon"
-                    android:backgroundTint="#F9F9F9"/>
+                    android:backgroundTint="#F9F9F9"
+                    android:src="@drawable/home_meditation_icon" />
 
                 <ImageButton
                     android:id="@+id/timetable_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/home_timetable_icon"
-                    android:backgroundTint="#F9F9F9"/>
+                    android:backgroundTint="#F9F9F9"
+                    android:src="@drawable/home_timetable_icon" />
             </LinearLayout>
 
             <LinearLayout
@@ -65,36 +65,89 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/home_wallet_icon"
-                    android:backgroundTint="#F9F9F9"/>
+                    android:backgroundTint="#F9F9F9"
+                    android:src="@drawable/home_wallet_icon" />
 
             </LinearLayout>
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/homepage_icons1TV"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="AI FRIEND"
-                android:layout_alignStart="@id/homepage_icons_1"
-                android:textColor="#00336F"
-                android:textSize="18sp"
-                />
+                android:layout_marginBottom="20dp">
 
-            <ImageView
-                android:id="@+id/homepage_icons_1"
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/homepage_icons1TV"
-                android:src="@drawable/homepage_icons_1"/>
+                <TextView
+                    android:id="@+id/homepage_icons1TV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/homepage_icons_1"
+                    android:layout_marginStart="-2dp"
+                    android:text="Penguin Friend"
+                    android:textColor="#00336F"
+                    android:textSize="18sp" />
 
+                <ImageView
+                    android:id="@+id/homepage_icons_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/homepage_icons1TV"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/homepage_icons_1" />
+
+                <TextView
+                    android:id="@+id/TV_Callforhelp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Call for help"
+                    android:layout_below="@id/homepage_icons_1"
+                    android:layout_marginTop="15dp"
+                    android:layout_alignStart="@id/homepage_icons_1"
+                    android:textColor="#00336F"
+                    android:textSize="18sp"/>
+
+                <Button
+                    android:id="@+id/callDoctor"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/TV_Callforhelp"
+                    android:layout_alignStart="@id/TV_Callforhelp"
+                    android:backgroundTint="#00B0CB"
+                    android:text="Call \nDoctor"
+                    android:textAllCaps="false"
+                    android:drawableBottom="@drawable/home_doctor_icons"
+                    android:textColor="@color/white"
+                    android:background="@drawable/emergency_call_button"/>
+
+                <Button
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/TV_Callforhelp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/emergency_call_button"
+                    android:backgroundTint="#51CD7B"
+                    android:drawableBottom="@drawable/home_callbefrienders"
+                    android:text="Call \nBefrienders"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@id/TV_Callforhelp"
+                    android:layout_alignEnd="@id/homepage_icons_1"
+                    android:backgroundTint="#FE0000"
+                    android:text="Share \nwith Me"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"
+                    android:background="@drawable/emergency_call_button"
+                    android:drawableBottom="@drawable/penguin"
+                    />
             </RelativeLayout>
+
 
         </LinearLayout>
     </ScrollView>

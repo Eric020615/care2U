@@ -94,7 +94,7 @@ public class HealthRecordActivity extends AppCompatActivity implements View.OnCl
 
                 PopupWindow popupWindow = new PopupWindow(getApplicationContext());
                 popupWindow.setOutsideTouchable(false);
-                popupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 popupWindow.setContentView(popup);
                 popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
                 popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);

@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -47,27 +48,32 @@ public class CalculateBMIActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View view) {
-        Double height = Double.parseDouble(height_et.getText().toString());
-        Double weight = Double.parseDouble(weight_et.getText().toString());
+        if (height_et.getText().toString().isEmpty() || weight_et.getText().toString().isEmpty()) {
+            Toast.makeText(this, "The field cannot be empty", Toast.LENGTH_SHORT).show();
+        } else {
+            Double height = Double.parseDouble(height_et.getText().toString());
+            Double weight = Double.parseDouble(weight_et.getText().toString());
 
-        double bmi = weight / ((height/100) * (height/100));
-        String status ="";
-        if (bmi>=30.0){
-            status = "Obesity";
-        }else if(bmi >=25.0 && bmi <=29.9){
-            status = "Overweight";
-        }else if(bmi >=18.5 && bmi <=24.9){
-            status = "Healthy Weight";
-        }else if(bmi <=18.5){
-            status = "Underweight";
+            double bmi = weight / ((height / 100) * (height / 100));
+            String status = "";
+            if (bmi >= 30.0) {
+                status = "Obesity";
+            } else if (bmi >= 25.0 && bmi <= 29.9) {
+                status = "Overweight";
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                status = "Healthy Weight";
+            } else if (bmi <= 18.5) {
+                status = "Underweight";
+            }
+            result_tv.setText(String.format("%.1f", bmi));
+            status_tv.setText(status);
+
+            height_et.setText("");
+            weight_et.setText("");
+
         }
-        result_tv.setText(String.format("%.1f",bmi));
-        status_tv.setText(status);
-
-        height_et.setText("");
-        weight_et.setText("");
-
     }
+
 }
 
 //    BMI	Weight Status

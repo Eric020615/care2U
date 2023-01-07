@@ -2,6 +2,7 @@ package com.example.care2u;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +14,7 @@ import com.example.care2u.adapter.PrescriptionOrderAdapter;
 
 public class PrescriptionOrderActivity extends AppCompatActivity {
 
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,7 @@ public class PrescriptionOrderActivity extends AppCompatActivity {
         close_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClick);
                 finish();
             }
         });

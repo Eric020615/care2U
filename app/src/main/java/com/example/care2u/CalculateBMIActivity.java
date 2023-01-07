@@ -2,6 +2,7 @@ package com.example.care2u;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,6 +23,7 @@ public class CalculateBMIActivity extends AppCompatActivity implements View.OnCl
     private TextView status_tv;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
     private String uid;
 
     @Override
@@ -41,6 +43,7 @@ public class CalculateBMIActivity extends AppCompatActivity implements View.OnCl
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClick);
                 finish();
             }
         });

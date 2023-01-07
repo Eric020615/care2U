@@ -2,6 +2,7 @@ package com.example.care2u;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -17,6 +18,7 @@ public class FAQActivity extends AppCompatActivity {
 
     private List<FAQ> faqList = new ArrayList<>();
     private ListView faqListView;
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class FAQActivity extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClick);
                 finish();
             }
         });

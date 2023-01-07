@@ -61,24 +61,16 @@ public class HomeFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 view.startAnimation(buttonClick);
-                Fragment fragment = new EWalletFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                Intent intent = new Intent(getActivity(),EWalletActivity.class);
+                startActivity(intent);
             }
         });
         meditation_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 view.startAnimation(buttonClick);
-                Fragment fragment = new MeditationFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                Intent intent = new Intent(getActivity(),MeditationActivity.class);
+                startActivity(intent);
             }
         });
         marketplace_btn.setOnClickListener(new View.OnClickListener() {

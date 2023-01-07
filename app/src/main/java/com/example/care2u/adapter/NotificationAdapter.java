@@ -24,7 +24,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     private Context context;
     private List<NotificationModel>NotificationList;
-    private List<String>userID;
 
     public NotificationAdapter(Context context){
         this.context=context;
@@ -45,10 +44,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         Collections.reverse(NotificationList);
     }
 
-    public void addID(String id){
-        userID.add(id);
-    }
-
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -60,16 +55,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         NotificationModel notificationModel = NotificationList.get(position);
         holder.content.setText(notificationModel.getContent());
-
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent=new Intent(context, ConversationActivity.class);
-//                intent.putExtra("id", user.getUserid());
-//                intent.putExtra("name",user.getUsername());
-//                context.startActivity(intent);
-//            }
-//        });
     }
 
     @Override
@@ -79,12 +64,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         private TextView content;
-        private LinearLayout notificationLayout;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-
             content = itemView.findViewById(R.id.notification_content);
-            notificationLayout = itemView.findViewById(R.id.notification_layout);
         }
     }
 }

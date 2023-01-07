@@ -1,24 +1,19 @@
 package com.example.care2u;
 
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.example.care2u.adapter.TransactionAdapter;
 import com.example.care2u.entity.TransactionModel;
@@ -29,28 +24,24 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class EWalletFragment extends Fragment {
+public class EWalletActivity extends AppCompatActivity {
 
-    private View root;
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
 
-    public EWalletFragment() {
-        // Required empty public constructor
-    }
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_e_wallet);
         TopUpFragment fragment = new TopUpFragment();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Assets");
         DatabaseReference transactionRef = FirebaseDatabase.getInstance().getReference("Transaction_History");
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        TransactionAdapter transactionAdapter = new TransactionAdapter(getContext());
-        root = inflater.inflate(R.layout.fragment_e_wallet, container, false);
-        ImageButton TopUpButton = root.findViewById(R.id.TopUpBtn);
-        TextView balance = root.findViewById(R.id.BalanceCount);
-        RecyclerView transaction = root.findViewById(R.id.transaction_list);
-        transaction.setLayoutManager(new LinearLayoutManager(getContext()));
+        TransactionAdapter transactionAdapter = new TransactionAdapter(getApplicationContext());
+        ImageView backBtn = findViewById(R.id.ewallet_back);
+        ImageButton TopUpButton = findViewById(R.id.TopUpBtn);
+        TextView balance = findViewById(R.id.BalanceCount);
+        RecyclerView transaction = findViewById(R.id.transaction_list);
+        transaction.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         String uid = mAuth.getCurrentUser().getUid();
         databaseReference.child(uid).child("Money").addValueEventListener(new ValueEventListener() {
             @Override
@@ -70,11 +61,19 @@ public class EWalletFragment extends Fragment {
             }
         });
 
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.startAnimation(buttonClick);
+                finish();
+            }
+        });
+
         TopUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 view.startAnimation(buttonClick);
-                fragment.show(getActivity().getSupportFragmentManager(), "Top Up");
+                fragment.show(getSupportFragmentManager(), "Top Up");
             }
         });
 
@@ -96,6 +95,5 @@ public class EWalletFragment extends Fragment {
             }
         });
 
-        return root;
     }
 }

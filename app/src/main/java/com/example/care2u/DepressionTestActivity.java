@@ -5,6 +5,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
@@ -26,6 +27,7 @@ public class DepressionTestActivity extends AppCompatActivity {
     ArrayList<String> dep_test_question_list = new ArrayList<>();
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();;
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class DepressionTestActivity extends AppCompatActivity {
         close_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClick);
                 finish();
             }
         });
@@ -49,6 +52,7 @@ public class DepressionTestActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClick);
                 ArrayList<Double> result = depTestAdapter.getTotalMark();
                 double total = 0;
                 for (double i: result) {
@@ -72,6 +76,7 @@ public class DepressionTestActivity extends AppCompatActivity {
                 ok_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        view.startAnimation(buttonClick);
                         popupWindow.dismiss();
                     }
                 });

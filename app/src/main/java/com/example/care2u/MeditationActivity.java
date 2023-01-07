@@ -2,28 +2,24 @@ package com.example.care2u;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.os.CountDownTimer;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
-import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MeditationFragment extends Fragment {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MeditationActivity extends AppCompatActivity {
+
     // count down function
     private static final long START_TIME_IN_MILLIS = 600000; // 10 minutes
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
 
     private TextView mTextViewCountDown;
-    private Button mButtonStartPause;
-    private Button mButtonReset;
-
+    private Button mButtonStartPause,mButtonReset;
+    private ImageView backButton;
     private CountDownTimer mCountDownTimer;
     private boolean mTimerRunning;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
@@ -36,13 +32,22 @@ public class MeditationFragment extends Fragment {
     private int currentSong = 0;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_meditation, container, false);
-
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_meditation);
         // count down function
-        mTextViewCountDown = rootView.findViewById(R.id.text_view_countdown);
-        mButtonStartPause = rootView.findViewById(R.id.button_start_pause);
-        mButtonReset = rootView.findViewById(R.id.button_reset);
+        mTextViewCountDown = findViewById(R.id.text_view_countdown);
+        mButtonStartPause = findViewById(R.id.button_start_pause);
+        mButtonReset = findViewById(R.id.button_reset);
+        backButton = findViewById(R.id.meditation_back);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.startAnimation(buttonClick);
+                finish();
+            }
+        });
 
         mButtonStartPause.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,11 +70,11 @@ public class MeditationFragment extends Fragment {
             }
         });
 
-        playpause = rootView.findViewById(R.id.Btn_play_music);
-        previous = rootView.findViewById(R.id.Btn_previous);
-        next = rootView.findViewById(R.id.Btn_next);
+        playpause = findViewById(R.id.Btn_play_music);
+        previous = findViewById(R.id.Btn_previous);
+        next = findViewById(R.id.Btn_next);
 
-        sound = MediaPlayer.create(getActivity(),songs[currentSong]);
+        sound = MediaPlayer.create(getApplicationContext(),songs[currentSong]);
         playpause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,7 +103,7 @@ public class MeditationFragment extends Fragment {
                     view.startAnimation(buttonClick);
                     currentSong = (songs.length - 1) % songs.length;
                 }
-                sound = MediaPlayer.create(getActivity(),songs[currentSong]);
+                sound = MediaPlayer.create(getApplicationContext(),songs[currentSong]);
             }
         });
 
@@ -112,15 +117,13 @@ public class MeditationFragment extends Fragment {
 
                 // increase the index to the next music
                 currentSong = (currentSong + 1) % songs.length;
-                sound = MediaPlayer.create(getActivity(),songs[currentSong]);
+                sound = MediaPlayer.create(getApplicationContext(),songs[currentSong]);
             }
         });
 
 
         // output
         updateCountDownText();
-
-        return rootView;
     }
 
     // count down function
@@ -177,5 +180,6 @@ public class MeditationFragment extends Fragment {
         sound.setLooping(true);
         sound.start();
     }
+
 
 }

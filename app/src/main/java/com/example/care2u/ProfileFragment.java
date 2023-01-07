@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ import java.io.IOException;
 public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private View root;
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -122,18 +124,22 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         final Intent[] intent = new Intent[1];
         switch (view.getId()) {
             case R.id.edit_profile_button:
+                view.startAnimation(buttonClick);
                 intent[0] = new Intent(getActivity(), EditProfileActivity.class);
                 startActivity(intent[0]);
                 break;
             case R.id.faqs_button:
+                view.startAnimation(buttonClick);
                 intent[0] = new Intent(getActivity(), FAQActivity.class);
                 startActivity(intent[0]);
                 break;
             case R.id.prescription_order_button:
+                view.startAnimation(buttonClick);
                 intent[0] = new Intent(getActivity(), PrescriptionOrderActivity.class);
                 startActivity(intent[0]);
                 break;
             case R.id.logout_button:
+                view.startAnimation(buttonClick);
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Log Out");
                 builder.setMessage("Are you sure to log out");

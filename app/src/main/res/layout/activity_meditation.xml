@@ -4,12 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#01639A"
-    tools:context=".MeditationFragment">
+    tools:context=".MeditationActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/gradient_blue_background">
+
+        <LinearLayout
+            android:id="@+id/topbarMeditation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            >
+
+            <ImageView
+                android:id="@+id/meditation_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/back_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:text="Meditation"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_marginTop="25dp"
@@ -17,6 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:layout_below="@id/topbarMeditation"
             android:src="@drawable/meditation_icon" />
 
         <TextView

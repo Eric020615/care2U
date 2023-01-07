@@ -39,17 +39,10 @@ public class TopUpFragment extends DialogFragment {
     private String order;
     private String key;
     private String notification_ID;
+    private EditText Amount;
 
     public TopUpFragment() {
         // Required empty public constructor
-    }
-
-    public Dialog onCreateDialog() {
-        return new AlertDialog.Builder(requireContext())
-                .setMessage("Top Up")
-                .setPositiveButton("ok", (dialog, which) -> {
-                })
-                .create();
     }
 
     @Override
@@ -63,7 +56,7 @@ public class TopUpFragment extends DialogFragment {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String uid = mAuth.getCurrentUser().getUid();
         Button TopUpButton = root.findViewById(R.id.TopUpButton);
-        EditText Amount = root.findViewById(R.id.editTopUpAmount);
+        Amount = root.findViewById(R.id.editTopUpAmount);
         databaseReference.child(uid).child("Money").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -107,6 +100,7 @@ public class TopUpFragment extends DialogFragment {
                                 public void onCancelled(@NonNull DatabaseError error) {
                                 }
                             });
+
                             notificationReference.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {

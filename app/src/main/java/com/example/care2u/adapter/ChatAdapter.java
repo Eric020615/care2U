@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,6 +34,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
     private Context context;
     private List<User>userList;
     private List<String>userID;
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
 
     public ChatAdapter(Context context){
         this.context=context;
@@ -89,6 +91,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClick);
                 Intent intent=new Intent(context, ConversationActivity.class);
                 intent.putExtra("id", user.getUserid());
                 intent.putExtra("name",user.getUsername());

@@ -34,10 +34,10 @@
         android:id="@+id/EWalletFragment"
         android:name="com.example.care2u.EWalletFragment"
         android:label="fragment_e_wallet"
-        tools:layout="@layout/fragment_e_wallet" />
+        tools:layout="@layout/activity_e_wallet" />
     <fragment
         android:id="@+id/meditationFragment"
         android:name="com.example.care2u.MeditationFragment"
         android:label="fragment_meditation"
-        tools:layout="@layout/fragment_meditation" />
+        tools:layout="@layout/activity_meditation" />
 </navigation>

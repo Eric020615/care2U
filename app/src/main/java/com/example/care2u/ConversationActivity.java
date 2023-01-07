@@ -3,6 +3,7 @@ package com.example.care2u;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +30,7 @@ public class ConversationActivity extends AppCompatActivity {
     String senderRoom, receiverRoom, name;
     ConversationAdapter conversationAdapter;
     String key;
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,7 @@ public class ConversationActivity extends AppCompatActivity {
         binding.sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClick);
                 String message = binding.messageEdit.getText().toString();
                 binding.messageEdit.setText("");
                 if (message.trim().length() > 0) {
@@ -76,6 +79,7 @@ public class ConversationActivity extends AppCompatActivity {
         binding.conversationBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClick);
                 Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
                 startActivity(intent);
             }
@@ -95,7 +99,6 @@ public class ConversationActivity extends AppCompatActivity {
                     conversationAdapter.add(messageModel);
                     databaseReferenceSender.child(key).setValue(messageModel);
                     databaseReferenceReceiver.child(key).setValue(messageModel);
-
                 } else {
                     messageModel = new MessageModel(key, FirebaseAuth.getInstance().getUid(), message);
                     conversationAdapter.add(messageModel);

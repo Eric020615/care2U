@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -31,6 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 public class EWalletFragment extends Fragment {
 
     private View root;
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
 
     public EWalletFragment() {
         // Required empty public constructor
@@ -71,6 +73,7 @@ public class EWalletFragment extends Fragment {
         TopUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClick);
                 fragment.show(getActivity().getSupportFragmentManager(), "Top Up");
             }
         });

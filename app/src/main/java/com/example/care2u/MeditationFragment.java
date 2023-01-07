@@ -9,13 +9,16 @@ import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MeditationFragment extends Fragment {
     // count down function
     private static final long START_TIME_IN_MILLIS = 600000; // 10 minutes
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
 
     private TextView mTextViewCountDown;
     private Button mButtonStartPause;
@@ -27,7 +30,7 @@ public class MeditationFragment extends Fragment {
 
     // music play function
     private MediaPlayer sound;
-    private Button playpause,previous,next;
+    private ImageView playpause,previous,next;
 
     private int[] songs = {R.raw.music1, R.raw.music2};
     private int currentSong = 0;
@@ -45,8 +48,10 @@ public class MeditationFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (mTimerRunning) {
+                    v.startAnimation(buttonClick);
                     pauseTimer();
                 } else {
+                    v.startAnimation(buttonClick);
                     startTimer();
                 }
             }
@@ -55,11 +60,11 @@ public class MeditationFragment extends Fragment {
         mButtonReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                v.startAnimation(buttonClick);
                 resetTimer();
             }
         });
 
-        // music play function
         playpause = rootView.findViewById(R.id.Btn_play_music);
         previous = rootView.findViewById(R.id.Btn_previous);
         next = rootView.findViewById(R.id.Btn_next);
@@ -69,8 +74,10 @@ public class MeditationFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(!sound.isPlaying()) {
+                    view.startAnimation(buttonClick);
                     startMusic();
                 } else {
+                    view.startAnimation(buttonClick);
                     sound.pause();
                 }
             }
@@ -85,8 +92,10 @@ public class MeditationFragment extends Fragment {
 
                 // decrease the index to the previous music
                 if(currentSong != 0){
+                    view.startAnimation(buttonClick);
                     currentSong = (currentSong - 1) % songs.length;
                 } else {
+                    view.startAnimation(buttonClick);
                     currentSong = (songs.length - 1) % songs.length;
                 }
                 sound = MediaPlayer.create(getActivity(),songs[currentSong]);
@@ -97,6 +106,7 @@ public class MeditationFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // stop music and release it
+                view.startAnimation(buttonClick);
                 sound.stop();
                 sound.release();
 

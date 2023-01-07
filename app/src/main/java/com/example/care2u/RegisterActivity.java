@@ -78,7 +78,7 @@ public class RegisterActivity extends AppCompatActivity {
                                             FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("weight").setValue("-");
                                             NotificationModel notificationModel = new NotificationModel("Welcome to Care2U","");
                                             FirebaseDatabase.getInstance().getReference("Notification").child(FirebaseAuth.getInstance().getUid()).child("1").setValue(notificationModel);
-                                            FirebaseDatabase.getInstance().getReference("Happiness Value").child(FirebaseAuth.getInstance().getUid()).setValue(0);
+                                            FirebaseDatabase.getInstance().getReference("Happiness Value").child(FirebaseAuth.getInstance().getUid()).child("Happy").setValue(0);
                                             Toast.makeText(RegisterActivity.this, "Account had been registered successfully.", Toast.LENGTH_SHORT).show();
                                             finish();
                                         }

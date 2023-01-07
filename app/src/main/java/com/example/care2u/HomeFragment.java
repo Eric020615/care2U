@@ -14,12 +14,14 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.ImageButton;
 
 public class HomeFragment extends Fragment{
 
     private View root;
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
 
     public HomeFragment() {
         // Required empty public constructor
@@ -38,6 +40,7 @@ public class HomeFragment extends Fragment{
         timetable_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClick);
                 Fragment fragment = new TimetableFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -49,6 +52,7 @@ public class HomeFragment extends Fragment{
         health_record_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClick);
                 Intent intent = new Intent(getActivity(), HealthRecordActivity.class);
                 startActivity(intent);
             }
@@ -56,6 +60,7 @@ public class HomeFragment extends Fragment{
         e_wallet_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClick);
                 Fragment fragment = new EWalletFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -67,6 +72,7 @@ public class HomeFragment extends Fragment{
         meditation_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClick);
                 Fragment fragment = new MeditationFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -78,6 +84,7 @@ public class HomeFragment extends Fragment{
         marketplace_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClick);
                 Intent intent = new Intent(getActivity(),MarketplaceDetailsActivity.class);
                 startActivity(intent);
             }

@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
@@ -31,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
     ActivityMainBinding binding;
     FirebaseAuth mAuth;
     FirebaseUser user;
@@ -65,7 +67,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                     popupWindow.setContentView(popup);
                     popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
                     popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-                    //popupWindow.showAtLocation(, Gravity.CENTER,0,0);
                 }
             }
 
@@ -171,6 +172,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                         closeBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
+                                view.startAnimation(buttonClick);
                                 popupWindow.dismiss();
                             }
                         });

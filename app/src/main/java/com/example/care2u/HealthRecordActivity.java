@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
@@ -24,10 +25,13 @@ import com.google.firebase.database.ValueEventListener;
 
 public class HealthRecordActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health_record);
+
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -76,19 +80,24 @@ public class HealthRecordActivity extends AppCompatActivity implements View.OnCl
         Intent intent;
         switch (view.getId()){
             case R.id.IV_back:
+                view.startAnimation(buttonClick);
                 finish();
                 break;
             case R.id.calculate_BMI_button:
+                view.startAnimation(buttonClick);
                 intent = new Intent(HealthRecordActivity.this,CalculateBMIActivity.class);
                 startActivity(intent);
                 break;
             case R.id.depression_test_button:
+                view.startAnimation(buttonClick);
                 intent = new Intent(HealthRecordActivity.this,DepressionTestActivity.class);
                 startActivity(intent);
                 break;
             case R.id.consultation_history_button:
+                view.startAnimation(buttonClick);
                 break;
             case R.id.reference_button:
+                view.startAnimation(buttonClick);
                 View popup = getLayoutInflater().inflate(R.layout.popup_window_reference_bmi_depression,null);
                 Button ok = popup.findViewById(R.id.ok_btn);
 

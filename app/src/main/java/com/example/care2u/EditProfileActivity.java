@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.security.identity.AccessControlProfileId;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -51,6 +52,8 @@ public class EditProfileActivity extends AppCompatActivity {
     private FirebaseStorage storage;
     private StorageReference storageReference;
     private StorageTask uploadTask;
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,39 +101,6 @@ public class EditProfileActivity extends AppCompatActivity {
                 choosePicture();
             }
         });
-
-//        buttonSave.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (!editName.getText().toString().isEmpty() && !editAge.getText().toString().isEmpty() && !editOccupation.getText().toString().isEmpty()
-//                        && !editHeight.getText().toString().isEmpty() && !editWeight.getText().toString().isEmpty()) {
-//
-//                    if (isNameChange() || isAgeChange() || isOccupationChange() || isHeightChange() || isWeightChange()) {
-//                        genderSelection = (RadioButton) findViewById(gender.getCheckedRadioButtonId());
-//                        bloodtypeSelection = (RadioButton) findViewById(bloodtype.getCheckedRadioButtonId());
-//
-//                        reference.child(uid).child("username").setValue(editName.getText().toString());
-//                        reference.child(uid).child("age").setValue(editAge.getText().toString());
-//                        reference.child(uid).child("occupation").setValue(editOccupation.getText().toString());
-//                        reference.child(uid).child("height").setValue(editHeight.getText().toString());
-//                        reference.child(uid).child("weight").setValue(editWeight.getText().toString());
-//                        reference.child(uid).child("Gender").setValue(genderSelection.getText());
-//                        reference.child(uid).child("Blood Type").setValue(bloodtypeSelection.getText());
-//
-//                        double height = Double.parseDouble(String.valueOf(editHeight.getText().toString()));
-//                        double weight = Double.parseDouble(String.valueOf(editWeight.getText().toString()));
-//                        double bmi = weight / ((height / 100) * (height / 100));
-//                        reference.child(uid).child("BMI").setValue(String.format("%.1f", bmi));
-//
-//                        Toast.makeText(EditProfileActivity.this, "Saved", Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        Toast.makeText(EditProfileActivity.this, "No Changes Found", Toast.LENGTH_SHORT).show();
-//                    }
-//                } else {
-//                    Toast.makeText(EditProfileActivity.this, "Please do not leave empty space!", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
     }
 
     private void choosePicture() {
@@ -149,6 +119,8 @@ public class EditProfileActivity extends AppCompatActivity {
             buttonSave.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    view.startAnimation(buttonClick);
+
                     if (!editName.getText().toString().isEmpty() && !editAge.getText().toString().isEmpty() && !editOccupation.getText().toString().isEmpty()
                             && !editHeight.getText().toString().isEmpty() && !editWeight.getText().toString().isEmpty()) {
 

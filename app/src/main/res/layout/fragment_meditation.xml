@@ -6,204 +6,101 @@
     android:background="#01639A"
     tools:context=".MeditationFragment">
 
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_blue_background">
 
-        <!-- Music Blank Part -->
-        <LinearLayout
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_marginTop="25dp"
+            android:id="@+id/image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/meditation_rectangle_white_with_radius_blank"
-            android:orientation="horizontal">
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/meditation_icon" />
+
+        <TextView
+            android:id="@+id/text_view_countdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:text="10:00"
+            android:textColor="@color/white"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/music"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_view_countdown"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/editprofilepicbutton"
+            android:backgroundTint="#00B0CB">
 
             <ImageView
-                android:id="@+id/magnifierIcon"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/meditation_magnifier_icon" />
-
-            <EditText
-                android:id="@+id/ET_searchField"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="9"
-                android:ems="12"
-                android:hint="SEARCH MUSIC"
-                android:inputType="textPersonName"
-                android:textSize="35px"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <!-- Music View -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/meditation_rectangle_normal_blue_with_radius_blank"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/Btn_music_detail"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_weight="1"
-                android:layout_marginTop="2dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/meditation_music_icon" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0"
-                android:layout_marginTop="8dp"
-                android:orientation="vertical"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
-
-
-                <TextView
-                    android:id="@+id/TV_music_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Unknown Music"
-                    android:textColor="#ffffff"
-                    android:textSize="12dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/TV_music_artist_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Unknown Artist"
-                    android:textColor="#ffffff"
-                    android:textSize="12dp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <Button
                 android:id="@+id/Btn_previous"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/meditation_backward_step_icon" />
+                android:layout_toLeftOf="@id/Btn_play_music"
+                android:background="@drawable/meditation_previous_icon"
+                android:backgroundTint="@color/blue"/>
 
-            <Button
+
+            <ImageView
                 android:id="@+id/Btn_play_music"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/meditation_circle_play_icon" />
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/meditation_circle_play_icon"
+                android:backgroundTint="@color/white" />
 
-            <Button
+            <ImageView
                 android:id="@+id/Btn_next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/meditation_forward_step_icon" />
+                android:layout_toRightOf="@id/Btn_play_music"
+                android:background="@drawable/meditation_forward_step_icon"
+                android:backgroundTint="@color/blue"/>
+
 
             <Button
-                android:id="@+id/Btn_music_list"
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/meditation_list_music_icon" />
-        </LinearLayout>
-
-        <!-- Meditation Part (Middle Part) -->
-
-        <ImageView
-            android:id="@+id/meditationIcon"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:background="@drawable/meditation_logo_icon"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="4"/>
-
-        <!-- Timer Part -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_weight="1"
-            android:background="@drawable/meditation_rectangle_white_background"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/Timer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Timer"
+                android:layout_below="@id/Btn_play_music"
+                android:layout_centerHorizontal="true"
+                android:backgroundTint="@color/blue"
+                android:background="@drawable/editprofilepicbutton"
+                android:id="@+id/button_start_pause"
+                android:layout_gravity="center_horizontal"
+                android:text="PRESS TO START"
                 android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="80px"
+                android:textColor="#ffffff"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                />
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/button_start_pause"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:backgroundTint="@color/blue"
+                android:background="@drawable/editprofilepicbutton"
+                android:id="@+id/button_reset"
+                android:layout_gravity="center_horizontal"
+                android:text="RESET"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="10sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/text_view_countdown"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="10:00"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="80px"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_weight="2"
-                android:background="@drawable/meditation_rectangle_white_background"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/button_start_pause"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:background="@drawable/meditation_rectangle_dark_blue_with_radius_button_colour"
-                    android:text="PRESS TO START"
-                    android:textAlignment="center"
-                    android:textColor="#ffffff"
-                    android:textSize="40px"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/button_reset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:background="@drawable/meditation_rectangle_dark_blue_with_radius_button_colour"
-                    android:text="RESET"
-                    android:textAlignment="center"
-                    android:textColor="#ffffff"
-                    android:textSize="40px"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </LinearLayout>
-
-    </LinearLayout>
+        </RelativeLayout>
 
 
+    </RelativeLayout>
 </FrameLayout>

@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 
 public class ForgotPassword extends AppCompatActivity {
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
     private Button buttonPwdReset;
     private EditText editTextPwdResetEmail;
     private FirebaseAuth authProfile;
@@ -35,6 +37,7 @@ public class ForgotPassword extends AppCompatActivity {
         buttonPwdReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                v.startAnimation(buttonClick);
                 String email = editTextPwdResetEmail.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {

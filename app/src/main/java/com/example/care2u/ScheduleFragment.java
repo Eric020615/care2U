@@ -78,10 +78,10 @@ public class ScheduleFragment extends Fragment {
     }
 
     private void initial() {
-        doctorList.add(new Doctor("Dr. Elizabeth Smith","Mental Health Specialist 10 Years Experience","Hawaii, United States",4.5));
-        doctorList.add(new Doctor("Dr. John Smith","Mental Health Specialist 8 Years Experience","London, United Kingdom",4.8));
-        doctorList.add(new Doctor("Dr. Natalia Ivanova","Mental Health Specialist 7 Years Experience","Moscow, Russia",4.7));
-        doctorList.add(new Doctor("Dr. Maria Garcia","Mental Health Specialist 7 Years Experience","New York City, United States",4.5));
-        doctorList.add(new Doctor("Dr. David Satcher","Mental Health Specialist 6 Years Experience","Tuskegee, United States",4.6));
+        doctorList.add(new Doctor("Dr Elizabeth Smith","Mental Health Specialist 10 Years Experience","Hawaii, United States",4.5));
+        doctorList.add(new Doctor("Dr John Smith","Mental Health Specialist 8 Years Experience","London, United Kingdom",4.8));
+        doctorList.add(new Doctor("Dr Natalia Ivanova","Mental Health Specialist 7 Years Experience","Moscow, Russia",4.7));
+        doctorList.add(new Doctor("Dr Maria Garcia","Mental Health Specialist 7 Years Experience","New York City, United States",4.5));
+        doctorList.add(new Doctor("Dr David Satcher","Mental Health Specialist 6 Years Experience","Tuskegee, United States",4.6));
     }
 }

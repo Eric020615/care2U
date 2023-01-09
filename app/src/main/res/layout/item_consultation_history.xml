@@ -76,7 +76,8 @@
         android:text="After your consultation, it is important to follow your prescribed treatment plan, including taking any medications as directed. Seek support from friends and family, and consider joining a support group or talking to a therapist. Practice self-care by getting regular exercise, eating a healthy diet, and getting enough sleep. Engage in activities that bring you a sense of accomplishment and enjoyment, and avoid alcohol and drugs. Make a plan with your doctor for what to do in the event of a crisis or worsening of symptoms. Remember to work with your doctor to develop a treatment plan that is tailored to your specific needs and goals."
         android:background="@color/white"
         android:textColor="@color/black"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        android:padding="7dp"/>
 
 
 

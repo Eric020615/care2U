@@ -1,12 +1,12 @@
 package com.example.care2u;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class StartingActivity extends AppCompatActivity {
 

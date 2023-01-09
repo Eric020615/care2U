@@ -1,22 +1,14 @@
 package com.example.care2u;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
-import android.widget.Button;
 import android.widget.ImageButton;
+
+import androidx.fragment.app.Fragment;
 
 public class HomeFragment extends Fragment{
 
@@ -41,12 +33,8 @@ public class HomeFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 view.startAnimation(buttonClick);
-                Fragment fragment = new TimetableFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                Intent intent = new Intent(getActivity(), TimetableActivity.class);
+                startActivity(intent);
             }
         });
         health_record_btn.setOnClickListener(new View.OnClickListener() {

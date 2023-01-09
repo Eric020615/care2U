@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/test">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageProfile"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/doctor1"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/doctor_name_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Dr Name: Dr. Elizabeth Smith"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/appointment_date_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Date: 18-1-2023"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/time_slot_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Time Slot: 10am - 12pm"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/show_advice_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/faq_arrow_down"
+        android:layout_gravity="center"/>
+
+
+    <TextView
+        android:id="@+id/advice_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="After your consultation, it is important to follow your prescribed treatment plan, including taking any medications as directed. Seek support from friends and family, and consider joining a support group or talking to a therapist. Practice self-care by getting regular exercise, eating a healthy diet, and getting enough sleep. Engage in activities that bring you a sense of accomplishment and enjoyment, and avoid alcohol and drugs. Make a plan with your doctor for what to do in the event of a crisis or worsening of symptoms. Remember to work with your doctor to develop a treatment plan that is tailored to your specific needs and goals."
+        android:background="@color/white"
+        android:textColor="@color/black"
+        android:visibility="gone"/>
+
+
+
+
+</LinearLayout>

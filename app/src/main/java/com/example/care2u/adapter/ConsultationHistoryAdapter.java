@@ -37,12 +37,23 @@ public class ConsultationHistoryAdapter extends RecyclerView.Adapter<Consultatio
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder,int position) {
-
+        holder.doctor_name_tv.setText("Dr Elizabeth Smith");
+        holder.appointment_date_tv.setText("2023-01-10");
+        holder.time_slot_tv.setText("10am-12pm");
+        holder.show_advice_iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (holder.advice_tv.getVisibility()==View.VISIBLE)
+                    holder.advice_tv.setVisibility(View.GONE);
+                else
+                    holder.advice_tv.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return historyList.size();
+        return 1;
     }
 
 

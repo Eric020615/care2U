@@ -1,26 +1,26 @@
 package com.example.care2u;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.care2u.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -158,30 +158,30 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
                         }
                     });
-                    if (happy==90){
-                        View popup = getLayoutInflater().inflate(R.layout.quote,null);
-                        PopupWindow popupWindow = new PopupWindow(getApplicationContext());
-                        popupWindow.setOutsideTouchable(false);
-                        popupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
-                        popupWindow.setContentView(popup);
-                        popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
-                        popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-                        popupWindow.showAtLocation(view, Gravity.CENTER,0,0);
-                        happinessvalue.child("Happy").setValue(0);
-                        ImageView closeBtn = popup.findViewById(R.id.quote_close);
-                        closeBtn.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                view.startAnimation(buttonClick);
-                                popupWindow.dismiss();
-                            }
-                        });
-                    }
-                    else{
-                        happy += 10;
-                        happinessvalue.child("Happy").setValue(happy);
-                        Toast.makeText(getApplicationContext(), "+10 Happiness Value", Toast.LENGTH_SHORT).show();
-                    }
+                if (happy==90){
+                    View popup = getLayoutInflater().inflate(R.layout.quote,null);
+                    PopupWindow popupWindow = new PopupWindow(getApplicationContext());
+                    popupWindow.setOutsideTouchable(false);
+                    popupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                    popupWindow.setContentView(popup);
+                    popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+                    popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+                    popupWindow.showAtLocation(view, Gravity.CENTER,0,0);
+                    happinessvalue.child("Happy").setValue(0);
+                    ImageView closeBtn = popup.findViewById(R.id.quote_close);
+                    closeBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            view.startAnimation(buttonClick);
+                            popupWindow.dismiss();
+                        }
+                    });
+                }
+                else{
+                    happy += 10;
+                    happinessvalue.child("Happy").setValue(happy);
+                    Toast.makeText(getApplicationContext(), "+10 Happiness Value", Toast.LENGTH_SHORT).show();
+                }
                 break;
 
             default:
@@ -189,5 +189,23 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         }
         return true;
     }
-}
 
+
+    long mExitTime;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK){
+            if((System.currentTimeMillis()-mExitTime) >2000){
+                Object mHelperUtils;
+                Toast.makeText(this, "Click one more time to exit the app", Toast.LENGTH_SHORT).show();
+                mExitTime = System.currentTimeMillis();
+            }else{
+                finish();
+            }
+            return  true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+
+}

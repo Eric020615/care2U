@@ -95,6 +95,8 @@ public class HealthRecordActivity extends AppCompatActivity implements View.OnCl
                 break;
             case R.id.consultation_history_button:
                 view.startAnimation(buttonClick);
+                intent = new Intent(HealthRecordActivity.this,ConsultationHistoryActivity.class);
+                startActivity(intent);
                 break;
             case R.id.reference_button:
                 view.startAnimation(buttonClick);

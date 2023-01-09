@@ -3,6 +3,7 @@ package com.example.care2u;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,6 +39,7 @@ public class TimetableActivity extends AppCompatActivity {
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://care2u-99f78-default-rtdb.firebaseio.com/");
     private TimetableAdapter timetableAdapter;
     private RecyclerView eventList;
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +59,6 @@ public class TimetableActivity extends AppCompatActivity {
 
 
         initiateEventDateMark(calendarView, eventDateList);
-//        CalendarDay today = CalendarDay.today();
-//        initiateEvent(today);
 
         calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
@@ -91,6 +91,7 @@ public class TimetableActivity extends AppCompatActivity {
         back_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClick);
                 finish();
             }
         });

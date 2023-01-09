@@ -21,8 +21,8 @@ public class CalculateBMIActivity extends AppCompatActivity implements View.OnCl
     private EditText weight_et;
     private TextView result_tv;
     private TextView status_tv;
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
     private String uid;
 

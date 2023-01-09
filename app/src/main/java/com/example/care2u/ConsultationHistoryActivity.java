@@ -2,6 +2,7 @@ package com.example.care2u;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +14,7 @@ import com.example.care2u.adapter.ConsultationHistoryAdapter;
 import java.util.ArrayList;
 
 public class ConsultationHistoryActivity extends AppCompatActivity {
-
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
     ArrayList<String> history_list = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class ConsultationHistoryActivity extends AppCompatActivity {
         close_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClick);
                 finish();
             }
         });

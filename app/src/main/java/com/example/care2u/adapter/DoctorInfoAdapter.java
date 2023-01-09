@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -25,7 +26,7 @@ public class DoctorInfoAdapter extends RecyclerView.Adapter<DoctorInfoAdapter.My
     private Context context;
     ArrayList<Doctor> doctorList = new ArrayList<>();
     int [] doctor_image = {R.drawable.doctor1,R.drawable.doctor2,R.drawable.doctor3,R.drawable.doctor4,R.drawable.doctor5};
-
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
 
     public DoctorInfoAdapter(Context context, ArrayList<Doctor> doctorList) {
         this.context = context;
@@ -51,6 +52,7 @@ public class DoctorInfoAdapter extends RecyclerView.Adapter<DoctorInfoAdapter.My
             holder.book_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    view.startAnimation(buttonClick);
                     Bundle bundle = new Bundle();
                     bundle.putString("name",doctor.getName());
                     bundle.putInt("image",doctor_image[position]);

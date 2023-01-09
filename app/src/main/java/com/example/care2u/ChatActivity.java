@@ -21,10 +21,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class ChatActivity extends AppCompatActivity {
-    ActivityChatBinding binding;
-    DatabaseReference databaseReference;
-    FirebaseAuth mAuth;
-    ChatAdapter chatAdapter;
+    private ActivityChatBinding binding;
+    private DatabaseReference databaseReference;
+    private FirebaseAuth mAuth;
+    private ChatAdapter chatAdapter;
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
 
     @Override

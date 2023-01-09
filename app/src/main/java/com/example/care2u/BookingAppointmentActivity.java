@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -44,6 +45,7 @@ public class BookingAppointmentActivity extends AppCompatActivity implements Vie
     private MaterialCalendarView calendarView;
     private String doctorName,patientName,time_choose;
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://care2u-99f78-default-rtdb.firebaseio.com/");
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,7 @@ public class BookingAppointmentActivity extends AppCompatActivity implements Vie
         back_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClick);
                 finish();
             }
         });
@@ -82,21 +85,7 @@ public class BookingAppointmentActivity extends AppCompatActivity implements Vie
                     calendarView.setDateSelected(CalendarDay.today(), true);
                     Toast.makeText(getApplicationContext(), "Cannot select previous date", Toast.LENGTH_SHORT).show();
                 }
-                databaseReference.child("Appointment").child(doctorName).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            String[] date_1 = dataSnapshot.getKey().split("-");
-                            CalendarDay day = CalendarDay.from(Integer.parseInt(date_1[0]), Integer.parseInt(date_1[1]), Integer.parseInt(date_1[2]));
-                            initiateBookedSlot(date);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
+                initiateBookedSlot(date);
                 selected_date = date;
             }
         });
@@ -184,7 +173,7 @@ public class BookingAppointmentActivity extends AppCompatActivity implements Vie
 
     @Override
     public void onClick(View view) {
-
+        view.startAnimation(buttonClick);
         switch (view.getId()) {
             case R.id.slot1:
                 if (current_pressed != null) {

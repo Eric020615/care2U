@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.care2u.entity.Appointment;
+import com.example.care2u.entity.Timetable;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,6 +27,7 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.spans.DotSpan;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -40,8 +42,7 @@ public class BookingAppointmentActivity extends AppCompatActivity implements Vie
     private CalendarDay selected_date = CalendarDay.today();
     private Button[] slot_button;
     private MaterialCalendarView calendarView;
-    private String doctorName;
-    private String patientName;
+    private String doctorName,patientName,time_choose;
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://care2u-99f78-default-rtdb.firebaseio.com/");
 
     @Override
@@ -71,13 +72,11 @@ public class BookingAppointmentActivity extends AppCompatActivity implements Vie
 
         calendarView = findViewById(R.id.calendar_view);
         calendarView.setDateSelected(CalendarDay.today(), true);
-        //initiateBookedSlot(CalendarDay.today());
         initiateBookingDate(calendarView, bookedDateList);
 
         calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
-//                Toast.makeText(getApplicationContext(), String.valueOf(date.getDate()),Toast.LENGTH_SHORT).show();
                 if (date.isBefore(CalendarDay.today())) {
                     calendarView.clearSelection();
                     calendarView.setDateSelected(CalendarDay.today(), true);
@@ -118,7 +117,6 @@ public class BookingAppointmentActivity extends AppCompatActivity implements Vie
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Appointment appointment = snapshot.getValue(Appointment.class);
-                // List<String>temp=snapshot.child("timeslot").getValue(List<String>.class);
                 String[] temp_slot;
                 if (appointment == null) {
                     temp_slot = new String[]{"1", "1", "1", "1"};
@@ -220,7 +218,22 @@ public class BookingAppointmentActivity extends AppCompatActivity implements Vie
             case R.id.book_btn:
                 try {
                     String slot_time = getTimeSlot(current_pressed.getId());
-                    databaseReference.child("Appointment").child(selected_date.getDate().toString()).addValueEventListener(new ValueEventListener() {
+                    int slot_id = current_pressed.getId();
+                    switch (slot_id){
+                        case R.id.slot1:
+                            time_choose="10am-12pm";
+                            break;
+                        case R.id.slot2:
+                            time_choose="1pm-3pm";
+                            break;
+                        case R.id.slot3:
+                            time_choose="3pm-5pm";
+                            break;
+                        case R.id.slot4:
+                            time_choose="5pm-7pm";
+                            break;
+                    }
+                    databaseReference.child("Appointment").child(doctorName).child(selected_date.getDate().toString()).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             Appointment appointment = snapshot.getValue(Appointment.class);
@@ -238,7 +251,7 @@ public class BookingAppointmentActivity extends AppCompatActivity implements Vie
                             String[] list = updatedbookedslot(slot_time, temp_slot);//add
                             List<String> timeslot = Arrays.asList(list);
                             String str_book_date = String.valueOf(selected_date.getDate());//add
-                            Toast.makeText(getApplicationContext(), "Selected date: " + str_book_date + "time slot: " + slot_time, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Book Successfully", Toast.LENGTH_SHORT).show();
                             initiateBookingDate(calendarView, bookedDateList);
                             initiateBookedSlot(selected_date);
                             current_pressed = null;
@@ -246,7 +259,9 @@ public class BookingAppointmentActivity extends AppCompatActivity implements Vie
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                     patientName = snapshot.child("username").getValue(String.class);
+                                    Timetable timetable = new Timetable(patientName,doctorName,str_book_date,time_choose);
                                     Appointment appointment = new Appointment(doctorName, patientName, str_book_date, timeslot);
+                                    databaseReference.child("Timetable").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(str_book_date).child(time_choose).setValue(timetable);
                                     databaseReference.child("Appointment").child(doctorName).child(str_book_date).setValue(appointment);
                                 }
 

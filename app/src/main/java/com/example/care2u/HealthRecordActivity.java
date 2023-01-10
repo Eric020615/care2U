@@ -32,7 +32,6 @@ public class HealthRecordActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health_record);
 
-
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String uid=mAuth.getCurrentUser().getUid();

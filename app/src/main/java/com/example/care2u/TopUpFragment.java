@@ -114,7 +114,7 @@ public class TopUpFragment extends DialogFragment {
                                 }
                             });
 
-                            Toast.makeText(getActivity(), "Reload Sucessfully", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "Reload Successfully", Toast.LENGTH_LONG).show();
                             dismiss();
                         }
                     });

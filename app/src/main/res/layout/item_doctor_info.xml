@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    style="@style/SCREEN_Image"
     android:background="@drawable/bmi_background_et"
     android:padding="10dp"
     android:layout_margin="5dp">
@@ -35,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:text="Dr. Elizabeth Smith"
                 android:textSize="20sp"
-                android:textColor="@color/black"
+                style="@style/TEXT"
                 android:fontFamily="sans-serif-black"
                 />
 
@@ -45,12 +46,13 @@
                 android:layout_height="wrap_content"
                 android:text="Mental Health Specialist 10 Years Experience"
                 android:textSize="15sp"
-                android:textColor="@color/black"
+                style="@style/TEXT"
                 android:fontFamily="sans-serif"
                 />
 
             <TextView
                 android:id="@+id/original_tv"
+                style="@style/TEXT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hawaii, United States"
@@ -82,7 +84,7 @@
             android:id="@+id/rating_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            style="@style/TEXT"
             android:text="4.5"
             android:textSize="18sp"
             android:layout_gravity="center"

@@ -198,6 +198,7 @@
                 android:background="@drawable/profile_button_icon"
                 android:drawableTop="@drawable/profile_edit_profile_icon"
                 android:paddingTop="20dp"
+                style="@style/BUTTON"
                 android:text="Edit Profile"
                 android:textAllCaps="false" />
 
@@ -213,6 +214,7 @@
                 android:background="@drawable/profile_button_icon"
                 android:drawableTop="@drawable/profile_medical_prescription_order"
                 android:paddingTop="20dp"
+                style="@style/BUTTON"
                 android:text="Prescription Order"
                 android:textAllCaps="false" />
 
@@ -227,6 +229,7 @@
                 android:background="@drawable/profile_button_icon"
                 android:drawableTop="@drawable/profile_faq_icon"
                 android:paddingTop="20dp"
+                style="@style/BUTTON"
                 android:text="FAQs"
                 android:textAllCaps="false" />
 
@@ -241,6 +244,7 @@
                 android:background="@drawable/profile_button_icon"
                 android:drawableTop="@drawable/profile_log_out_icon"
                 android:paddingTop="20dp"
+                style="@style/BUTTON"
                 android:text="Log Out"
                 android:textAllCaps="false" />
         </GridLayout>

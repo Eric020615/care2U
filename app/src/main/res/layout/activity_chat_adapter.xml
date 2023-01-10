@@ -7,11 +7,13 @@
         android:id="@+id/chat_root_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        style="@style/SCREEN">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            style="@style/SCREEN">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/chat_profile"
@@ -38,6 +40,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
+                    style="@style/TEXT"
                     android:text="Fullname"
                     android:textSize="18sp"
                     android:textStyle="bold" />

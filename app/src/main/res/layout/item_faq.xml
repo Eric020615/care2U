@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    style="@style/SCREEN">
 
     <TextView
         android:id="@+id/question_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        style="@style/TEXT"
         android:textSize="20sp"
         android:text="How to register an account"
         android:layout_marginLeft="10dp"

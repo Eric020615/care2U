@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
+    style="@style/SCREEN_Image"
     android:background="@drawable/bmi_background_et"
     android:orientation="vertical">
 
@@ -46,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="Dr Name: Dr. Elizabeth Smith"
-                android:textColor="@color/black"
+                style="@style/TEXT"
                 android:textSize="16sp" />
 
             <TextView
@@ -54,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Date: 18-1-2023"
-                android:textColor="@color/black"
+                style="@style/TEXT"
                 android:textSize="16sp" />
 
             <TextView
@@ -63,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="Time Slot: 10am - 12pm"
-                android:textColor="@color/black"
+                style="@style/TEXT"
                 android:textSize="16sp" />
 
         </LinearLayout>

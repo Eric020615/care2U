@@ -57,6 +57,7 @@
         android:textSize="15sp"
         android:text="OK"
         android:layout_gravity="center"
+        style="@style/SCREEN_Image"
         android:background="@drawable/bmi_background_et"/>
 
 

@@ -13,7 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#F9F9F9"
+            style="@style/SCREEN"
             android:orientation="vertical">
 
             <ImageButton
@@ -21,13 +21,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:backgroundTint="#F9F9F9"
+                style="@style/BUTTON"
                 android:src="@drawable/home_marketplace_button" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#F9F9F9"
+                style="@style/SCREEN"
                 android:orientation="horizontal">
 
                 <ImageButton
@@ -35,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:backgroundTint="#F9F9F9"
+                    style="@style/BUTTON"
                     android:src="@drawable/home_meditation_icon" />
 
                 <ImageButton
@@ -43,7 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:backgroundTint="#F9F9F9"
+                    style="@style/BUTTON"
                     android:src="@drawable/home_timetable_icon" />
             </LinearLayout>
 
@@ -57,7 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:backgroundTint="#F9F9F9"
+                    style="@style/BUTTON"
                     android:src="@drawable/home_health_record_icon" />
 
                 <ImageButton
@@ -65,7 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:backgroundTint="#F9F9F9"
+                    style="@style/BUTTON"
                     android:src="@drawable/home_wallet_icon" />
 
             </LinearLayout>
@@ -83,7 +83,7 @@
                     android:layout_alignStart="@id/homepage_icons_1"
                     android:layout_marginStart="-2dp"
                     android:text="Penguin Friend"
-                    android:textColor="#00336F"
+                    style="@style/TEXT"
                     android:textSize="18sp" />
 
                 <ImageView
@@ -103,7 +103,7 @@
                     android:layout_below="@id/homepage_icons_1"
                     android:layout_marginTop="15dp"
                     android:layout_alignStart="@id/homepage_icons_1"
-                    android:textColor="#00336F"
+                    style="@style/TEXT"
                     android:textSize="18sp"/>
 
                 <Button

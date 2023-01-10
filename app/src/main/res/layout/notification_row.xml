@@ -12,12 +12,12 @@
             android:text="Hello guys"
             android:textSize="15sp"
             android:padding="20dp"
-            android:textColor="@color/white"
+            style="@style/TEXT"
             />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#01FFF6"/>
+            style="@style/TOP_BAR"/>
 
 </LinearLayout>

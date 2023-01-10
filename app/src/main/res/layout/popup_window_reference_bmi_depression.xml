@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@drawable/bmi_background_et"
-    android:padding="10dp">
+    android:padding="10dp"
+    style="@style/SCREEN_Image">
 
 
     <TextView
@@ -284,6 +285,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
+        style="@style/SCREEN_Image"
         android:background="@drawable/bmi_background_et"/>
 
 

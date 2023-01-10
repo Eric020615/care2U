@@ -24,7 +24,7 @@
             android:id="@+id/tool_app"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#01639A"
+            style="@style/TOP_BAR"
             android:minHeight="?attr/actionBarSize"
             app:titleTextColor="@color/white"
             app:menu="@menu/menu_top"
@@ -41,7 +41,7 @@
             app:navGraph="@navigation/care2u_nav" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:background="@color/white"
+            style="@style/BOTTOM_BAR"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/bottom_nav_view"
